@@ -12,32 +12,27 @@ import People1 from "../assets/img/testimonial/people-1.jpg";
 import People2 from "../assets/img/testimonial/people-2.jpg";
 import People3 from "../assets/img/testimonial/people-3.jpg";
 
+
+// import React from "react";
+// import ReactDOM from "react-dom";
+// import App from "./App";
+// import "./styles.css";
+
+// ReactDOM.render(
+//   <React.StrictMode>
+//     <App />
+//   </React.StrictMode>,
+//   document.getElementById("root")
+// );
+
+
+
 export const navLinks = [
-  {
-    id: 1,
-    path: "",
-    text: "Home",
-  },
-  {
-    id: 2,
-    path: "kelas",
-    text: "Kelas",
-  },
-  {
-    id: 3,
-    path: "testimonial",
-    text: "Testimonial",
-  },
-  {
-    id: 4,
-    path: "faq",
-    text: "FAQ",
-  },
-  {
-    id: 5,
-    path: "syaratketen",
-    text: "Syarat & Ketentuan",
-  },
+    { id: 1, text: "Home", path: "/" },
+    { id: 2, text: "Recipes", path: "/recipes" },
+    { id: 3, text: "Blog", path: "/blog" },
+    { id: 4, text: "About", path: "/about" },
+    { id: 5, text: "Contact", path: "/contact" },
 ];
 
 export const semuaKelas = [
