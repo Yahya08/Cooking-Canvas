@@ -7,10 +7,15 @@ import NavbarComponent from './components/NavbarComponent';
 // import FooterComponent from './components/FooterComponent';
 import {Routes, Route} from 'react-router-dom';
 import HomePage from './pages/HomePage';
-import KelasPage from './pages/KelasPage';
-import SyaratKetenPage from './pages/SyaratKetenPage';
-import TestimonialPage from './pages/TestimonialPage';
-import FaqPage from './pages/FaqPage';
+import Product from './pages/Product';
+import Aboutus from './pages/Aboutus';
+import Contact from './pages/Contact';
+import Signin from './pages/Signin';
+import Signup from './pages/Signup';
+
+
+
+
 
 
 function App() {
@@ -19,10 +24,11 @@ function App() {
 
     <Routes>
       <Route path="/" Component={HomePage}/>
-      <Route path="/kelas" Component={KelasPage}/>
-      <Route path="/testimonial" Component={TestimonialPage}/>
-      <Route path="/faq" Component={FaqPage}/>
-      <Route path="/syaratketen" Component={SyaratKetenPage}/>
+      <Route path="/product" Component={Product}/>
+      <Route path="/Aboutus" Component={Aboutus}/>
+      <Route path="/signin" Component={Signin}/>
+      <Route path="/contact" Component={Contact}/>
+      <Route path="/signup" Component={Signup}/>
     </Routes>
 
     {/* <FooterComponent/> */}
