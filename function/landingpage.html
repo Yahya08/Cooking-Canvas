@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Komentar List</title>
+</head>
+<body>
+    <div id="komentarContainer"></div>
+
+    <script>
+        function fetchKomentar() {
+            // Lakukan permintaan POST
+            fetch('/backend/function/landingpage_api.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: new URLSearchParams(),
+            })
+            .then(response => response.json())
+            .then(data => {
+                const komentarContainer = document.getElementById('komentarContainer');
+                komentarContainer.innerHTML = ''; // Bersihkan konten sebelum menampilkan data baru
+                if (Array.isArray(data)) {
+                    data.forEach(komentar => {
+                        const komentarData = document.createElement('div');
+                        komentarData.textContent = `ID Komentar: ${komentar.id_komentar}, ID User: ${komentar.id_user}, Text: ${komentar.text_komentar}`;
+                        komentarContainer.appendChild(komentarData);
+                    });
+                } else {
+                    const errorMessage = document.createElement('div');
+                    errorMessage.textContent = data.message ? data.message : 'Tidak ada komentar yang ditemukan';
+                    komentarContainer.appendChild(errorMessage);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                const komentarContainer = document.getElementById('komentarContainer');
+                const errorMessage = document.createElement('div');
+                errorMessage.textContent = 'Terjadi kesalahan saat mengambil data komentar';
+                komentarContainer.appendChild(errorMessage);
+            });
+        }
+
+        // Panggil fungsi fetchKomentar saat halaman dimuat
+        fetchKomentar();
+    </script>
+</body>
+</html>
