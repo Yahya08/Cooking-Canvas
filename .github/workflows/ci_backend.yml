@@ -1,0 +1,17 @@
+name: PHP CI
+
+on:
+  push:
+    branches:
+      - backend
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Run PHP lint
+      run: php -l .
