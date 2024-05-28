@@ -1,0 +1,39 @@
+.navbar {
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar.color-active {
+    background-color: #f8f9fa;
+  }
+  
+  .navbar-brand img {
+    display: block;
+  }
+  
+  .nav-link {
+    color: #000;
+    background-color: #f8f9fa;
+    padding: 10px 20px;
+    margin: 0 5px;
+    border-radius: 10px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .nav-link.active, .nav-link:hover {
+    background-color: #343a40;
+    color: #fff;
+  }
+  
+  .navbar .btn-outline-danger {
+    border-color: #dc3545;
+    color: #dc3545;
+  }
+  
+  .navbar .btn-outline-danger:hover {
+    background-color: #dc3545;
+    color: white;
+  }
+  
