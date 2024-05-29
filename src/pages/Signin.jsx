@@ -1,3 +1,5 @@
+import '../style/Signin.css';
+
 const Signin = () => {
   return (
     <div>Signin</div>

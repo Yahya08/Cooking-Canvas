@@ -7,22 +7,45 @@ const Product = () => {
   return (
   <div>
     <div className="container">
-      <section className="popular-recipes">
-        <h2>Resep populer</h2>
-        <div className="row">
-          {[1, 2, 3].map((i) => (
-            <div className="col-md-4" key={i}>
-              <div className="card">
-                <img src={`https://png.pngtree.com/png-vector/20230726/ourmid/pngtree-coloring-pages-free-kids-printable-teddy-bear-drawing-in-pencil-cartoon-png-image_6746133${i}.png`} className="card-img-top" alt={`Resep ${i}`} />
-                <div className="card-body">
-                  <h5 className="card-title">Resep {i}</h5>
-                  <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </div>
-              </div>
-            </div>
-          ))}
+    <section className="popular-recipes">
+  <h2>Resep populer</h2>
+  <div className="row">
+    {[1, 2, 3].map((i) => (
+      <div className="col-md-4" key={i}>
+        <div className="card small-card">
+          <img
+            src={`https://png.pngtree.com/png-vector/20230726/ourmid/pngtree-coloring-pages-free-kids-printable-teddy-bear-drawing-in-pencil-cartoon-png-image_6746133.png`}
+            className="card-img-top"
+            alt={`Resep ${i}`}
+          />
+          <div className="card-body">
+            <h5 className="card-title">Resep {i}</h5>
+            <p className="card-text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </p>
+          </div>
         </div>
-      </section>
+      </div>
+    ))}
+  </div>
+</section>
+
+
+
+
+     
+
+
+
+
+
+
+
+
+
+
+
+
       <section className="latest-recipes mt-5">
         <h2>Resep terbaru</h2>
         <div className="recipe-item mb-4">

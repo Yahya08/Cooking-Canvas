@@ -22,8 +22,8 @@
   
   .popular-recipes .card img,
   .latest-recipes .recipe-item img {
-    width: 100%;
-    height: auto;
+    width: 10%;
+    height: 30%;
   }
   
   .popular-recipes .card-body,
