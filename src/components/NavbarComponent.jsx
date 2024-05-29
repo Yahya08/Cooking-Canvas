@@ -4,7 +4,7 @@ import{ navLinks } from "../data/index";
 import{ NavLink } from "react-router-dom";
 import PropTypes from 'prop-types';
 
-import '../dist/css/Navbar.css'; 
+import '../style/Navbar.css'; 
 
 const NavbarComponent = () => {
   const [changeColor, setChangeColor] = useState(false);

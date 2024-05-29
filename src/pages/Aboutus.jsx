@@ -2,7 +2,7 @@
 import { Container, Row, Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faLinkedin, faInstagram } from '@fortawesome/free-brands-svg-icons';
-import '../dist/css/Aboutus.css';  // Importing the CSS file using the relative path
+import '../style/Aboutus.css';
 
 const Aboutus = () => {
   return (
