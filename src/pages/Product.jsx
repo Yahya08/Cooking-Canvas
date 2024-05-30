@@ -1,5 +1,5 @@
 import { Container, Row, Col } from "react-bootstrap";
-import '../dist/css/Product.css';  // Assuming you have a CSS file for custom styles
+import '../style/Product.css';  // Assuming you have a CSS file for custom styles
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faLinkedin, faInstagram } from '@fortawesome/free-brands-svg-icons';
 

@@ -3,7 +3,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faLinkedin, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import {   faWhatsapp } from '@fortawesome/free-brands-svg-icons';
-import '../dist/css/Contact.css';  // Ensure the path is correct relative to your project structure
+import '../style/Contact.css';  // Ensure the path is correct relative to your project structure
 
 const Contact = () => {
   return (
