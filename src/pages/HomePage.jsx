@@ -124,6 +124,7 @@ const HomePage = () => {
                 <a href="#" className="text-white me-3">Product</a>
                 <a href="#" className="text-white me-3">About Us</a>
                 <a href="#" className="text-white">Contact</a>
+                <a href="#" className="text-white">DasboardAdmin</a>
               </div>
             </Col>
             <Col md={4} className="d-flex justify-content-end">

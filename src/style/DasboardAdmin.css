@@ -1,0 +1,81 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .dashboard {
+    display: flex;
+    height: 100vh;
+  }
+  
+  .sidebar {
+    width: 200px;
+    background-color: #343a40;
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .sidebar button {
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+  }
+  
+  .sidebar button:hover {
+    background-color: #5a6268;
+  }
+  
+  .content {
+    flex: 1;
+    padding: 20px;
+    background-color: #f8f9fa;
+  }
+  
+  .content h1 {
+    margin-bottom: 20px;
+  }
+  
+  .recipe-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .recipe-table th,
+  .recipe-table td {
+    border: 1px solid #dee2e6;
+    padding: 12px;
+    text-align: left;
+  }
+  
+  .recipe-table th {
+    background-color: #e9ecef;
+  }
+  
+  .recipe-table button {
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .detail-btn {
+    background-color: #17a2b8;
+    color: white;
+  }
+  
+  .accept-btn {
+    background-color: #28a745;
+    color: white;
+    margin-right: 5px;
+  }
+  
+  .reject-btn {
+    background-color: #dc3545;
+    color: white;
+  }
+  
