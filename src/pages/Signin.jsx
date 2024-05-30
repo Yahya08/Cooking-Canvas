@@ -42,7 +42,7 @@ const Signin = () => {
                   <Form.Control type="password" className="w-100" />
                 </Form.Group>
                 <Button variant="primary" type="submit" block style={{ backgroundColor: '#0F172A', borderColor: '#0F172A', width: '100%' }}>
-                  Sign Up
+                  Sign In
                 </Button>
               </Form>
               <div className="text-center mt-3">
