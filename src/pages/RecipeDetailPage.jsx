@@ -1,5 +1,8 @@
-import './style/RecipeDetailPage.css';  // Ensure the path is correct relative to your project structure
+import '../style/RecipeDetailPage.css';  // Ensure the path is correct relative to your project structure
 import { useState } from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebook, faLinkedin, faInstagram } from '@fortawesome/free-brands-svg-icons';
 
 
 const RecipeDetailPage = () => {
@@ -23,15 +26,21 @@ const RecipeDetailPage = () => {
   };
 
   return (
+
+
+
+    <div>
+
     <div className="recipe-detail-page container">
       <div className="row">
-        <div className="col-md-6">
-          <img
-            src="https://via.placeholder.com/400"
-            alt="Ayam Goreng Geprek"
-            className="img-fluid"
-          />
-        </div>
+      <div className="col-md-6">
+  <img
+    src="https://png.pngtree.com/png-vector/20230726/ourmid/pngtree-coloring-pages-free-kids-printable-teddy-bear-drawing-in-pencil-cartoon-png-image_6746133.png"
+    alt="Ayam Goreng Geprek"
+    className="img-fluid"
+  />
+</div>
+
         <div className="col-md-6">
           <h1>Ayam Goreng Geprek</h1>
           <p>1-2 porsi | waktu: berapa lama</p>
@@ -107,7 +116,7 @@ const RecipeDetailPage = () => {
           <div className="row">
             <div className="col-md-4">
               <div className="card">
-                <img src="https://via.placeholder.com/150" className="card-img-top" alt="Resep 1" />
+                <img src="https://png.pngtree.com/png-vector/20230726/ourmid/pngtree-coloring-pages-free-kids-printable-teddy-bear-drawing-in-pencil-cartoon-png-image_6746133.png" className="card-img-top" alt="Resep 1" />
                 <div className="card-body">
                   <h5 className="card-title">Resep 1</h5>
                   <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -116,7 +125,7 @@ const RecipeDetailPage = () => {
             </div>
             <div className="col-md-4">
               <div className="card">
-                <img src="https://via.placeholder.com/150" className="card-img-top" alt="Resep 2" />
+                <img src="https://png.pngtree.com/png-vector/20230726/ourmid/pngtree-coloring-pages-free-kids-printable-teddy-bear-drawing-in-pencil-cartoon-png-image_6746133.png" className="card-img-top" alt="Resep 2" />
                 <div className="card-body">
                   <h5 className="card-title">Resep 2</h5>
                   <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -125,7 +134,7 @@ const RecipeDetailPage = () => {
             </div>
             <div className="col-md-4">
               <div className="card">
-                <img src="https://via.placeholder.com/150" className="card-img-top" alt="Resep 3" />
+                <img src="https://png.pngtree.com/png-vector/20230726/ourmid/pngtree-coloring-pages-free-kids-printable-teddy-bear-drawing-in-pencil-cartoon-png-image_6746133.png" className="card-img-top" alt="Resep 3" />
                 <div className="card-body">
                   <h5 className="card-title">Resep 3</h5>
                   <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -135,6 +144,39 @@ const RecipeDetailPage = () => {
           </div>
         </div>
       </div>
+
+
+    </div>
+
+
+    <div className="white-divider"></div>
+      <footer className="footer-section py-4">
+      <Container>
+      <Row className="d-flex justify-content-between align-items-center text-white py-3">
+            <Col md={4} className="d-flex justify-content-start">
+              <div>
+                <h5>Cooking Canvas</h5>
+                <p>© Cooking Canvas 2024 Ltd.</p>
+              </div>
+            </Col>
+            <Col md={4} className="d-flex justify-content-center">
+              <div>
+                <a href="#" className="text-white me-3">Home</a>
+                <a href="#" className="text-white me-3">Product</a>
+                <a href="#" className="text-white me-3">About Us</a>
+                <a href="#" className="text-white">Contact</a>
+              </div>
+            </Col>
+            <Col md={4} className="d-flex justify-content-end">
+              <div>
+                <a href="#" className="text-white me-3"><FontAwesomeIcon icon={faFacebook} /> Facebook</a>
+                <a href="#" className="text-white me-3"><FontAwesomeIcon icon={faLinkedin} /> LinkedIn</a>
+                <a href="#" className="text-white"><FontAwesomeIcon icon={faInstagram} /> Instagram</a>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </footer>
     </div>
   );
 };

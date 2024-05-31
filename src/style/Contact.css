@@ -39,4 +39,15 @@
   .text-end {
     text-align: right;
   }
-  
+  .conten h1{
+    font-size: 64px;
+  }
+  .conten p{
+    color:#666;
+    text-align: left;
+    font-size:24px;
+  }
+  .icon-text{
+    font-size: 24px;
+    padding-top: 1rem;
+  }
