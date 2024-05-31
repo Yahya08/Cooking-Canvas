@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-function DasboardUser() {
+function DasboardTambahResep() {
     const [judul, setJudul] = useState('');
     const [waktu, setWaktu] = useState('');
     const [porsi, setPorsi] = useState('');
@@ -75,4 +75,4 @@ function DasboardUser() {
       </div>
     );
   }
-  export default DasboardUser;
+  export default DasboardTambahResep;

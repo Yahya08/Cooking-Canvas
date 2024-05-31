@@ -13,7 +13,9 @@ import Contact from './pages/Contact';
 import Signin from './pages/Signin';
 import Signup from './pages/Signup';
 import DasboardAdmin from './pages/DasboardAdmin';
-import DasboardUser from './pages/DasboardUser';
+import DasboardTambahResep from './pages/DasboardTambahResep';
+import DashboardPermintaanResep from './pages/DasboardPermintaanResep';
+import DasboardEditResep from './pages/DasboardEditResep';
 
 
 
@@ -32,7 +34,11 @@ function App() {
       <Route path="/contact" Component={Contact}/>
       <Route path="/signup" Component={Signup}/>
       <Route path="/DasboardAdmin" Component={DasboardAdmin}/>
-      <Route path="/DasboardUser" Component={DasboardUser}/>
+      <Route path="/DasboardTambahResep" Component={DasboardTambahResep}/>
+      <Route path="/DasboardPermintaanResep" Component={DashboardPermintaanResep}/>
+      <Route path="/DasboardEditResep" Component={DasboardEditResep}/>
+      
+      
     </Routes>
 
     {/* <FooterComponent/> */}
