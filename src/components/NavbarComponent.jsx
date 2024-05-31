@@ -49,11 +49,11 @@ const NavbarComponent = () => {
               </Nav.Link>
             ))}
           </Nav>
-          <div className="text-center">
+          {/* <div className="text-center">
             <button className="btn btn-outline-danger rounded-1">
               Join with us
             </button>
-          </div>
+          </div> */}
         </Navbar.Collapse>
       </Container>
     </Navbar>

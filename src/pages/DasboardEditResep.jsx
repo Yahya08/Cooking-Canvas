@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const DashboardEditResep = () => {
-  const [resepData, setResepData] = useState([
+  const [resepData] = useState([
     {
       title: 'Nasi goreng Khas Yogyakarta',
       portion: 1,

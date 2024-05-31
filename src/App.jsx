@@ -16,6 +16,7 @@ import DasboardAdmin from './pages/DasboardAdmin';
 import DasboardTambahResep from './pages/DasboardTambahResep';
 import DashboardPermintaanResep from './pages/DasboardPermintaanResep';
 import DasboardEditResep from './pages/DasboardEditResep';
+import RecipeDetailPage from './pages/RecipeDetailPage';
 
 
 
@@ -37,6 +38,7 @@ function App() {
       <Route path="/DasboardTambahResep" Component={DasboardTambahResep}/>
       <Route path="/DasboardPermintaanResep" Component={DashboardPermintaanResep}/>
       <Route path="/DasboardEditResep" Component={DasboardEditResep}/>
+      <Route path="/RecipeDetailPage" Component={RecipeDetailPage}/>
       
       
     </Routes>

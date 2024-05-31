@@ -1,0 +1,36 @@
+.recipe-detail-page {
+    margin: 20px 0;
+  }
+  
+  .recipe-detail-page img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+  }
+  
+  .recipe-detail-page h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+  }
+  
+  .recipe-detail-page p {
+    font-size: 1.1em;
+  }
+  
+  .recipe-detail-page ul, .recipe-detail-page ol {
+    font-size: 1em;
+    margin-bottom: 20px;
+  }
+  
+  .recipe-detail-page form {
+    margin-bottom: 20px;
+  }
+  
+  .recipe-detail-page .list-group-item {
+    margin-bottom: 10px;
+  }
+  
+  .recipe-detail-page .card {
+    margin-bottom: 20px;
+  }
+  

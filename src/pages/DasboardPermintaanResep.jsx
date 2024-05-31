@@ -1,20 +1,20 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const DashboardPermintaanResep = () => {
-  const [resepData, setResepData] = useState([
+  const [resepData] = useState([
     {
       title: 'Nasi goreng Khas Yogyakarta',
       portion: 1,
       time: 120,
       level: 'Sedang',
-      description: 'Ayam geprek adalah makanan ayam goreng tepung khas Indonesia yang dilulek atau dilumatlean bersama sambal bajak. Sebagian besar sumber menyebut bahwa ayam geprek berasal dari Kota Yogyakarta.',
+      description: 'Nasi goreng Khas Yogyakarta adalah variasi nasi goreng yang memiliki cita rasa khas dengan bumbu dan rempah khas Yogyakarta.',
     },
     {
-      title: 'Nasi goreng Khas Yogyakarta',
+      title: 'Ayam Geprek',
       portion: 1,
-      time: 120,
-      level: 'Sedang',
-      description: 'Ayam geprek adalah makanan ayam goreng tepung khas Indonesia yang dilulek atau dilumatlean bersama sambal bajak. Sebagian besar sumber menyebut bahwa ayam geprek berasal dari Kota Yogyakarta.',
+      time: 30,
+      level: 'Mudah',
+      description: 'Ayam geprek adalah makanan ayam goreng tepung khas Indonesia yang dilulek atau dilumatkan bersama sambal bajak. Sebagian besar sumber menyebut bahwa ayam geprek berasal dari Kota Yogyakarta.',
     },
     // Tambahkan data resep lainnya di sini
   ]);
@@ -42,7 +42,7 @@ const DashboardPermintaanResep = () => {
               <tr>
                 <th>Title</th>
                 <th>Portion</th>
-                <th>Time</th>
+                <th>Time (min)</th>
                 <th>Level</th>
                 <th>Description</th>
                 <th>Detail</th>

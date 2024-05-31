@@ -10,6 +10,35 @@ const DashboardAdmin = () => {
         level: 'Sedang',
         description: 'Ayam geprek adalah makanan ayam goreng tepung khas Indonesia yang diulek atau dilumatkan bersama sambal bajak...',
       },
+
+      {
+        title: 'Nasi goreng Khas Yogyakarta',
+        portion: 2,
+        time: 120,
+        level: 'Sedang',
+        description: 'Ayam geprek adalah makanan ayam goreng tepung khas Indonesia yang diulek atau dilumatkan bersama sambal bajak...',
+      },
+      {
+        title: 'Nasi goreng Khas Yogyakarta',
+        portion: 1,
+        time: 120,
+        level: 'Sedang',
+        description: 'Ayam geprek adalah makanan ayam goreng tepung khas Indonesia yang diulek atau dilumatkan bersama sambal bajak...',
+      },
+      {
+        title: 'Nasi goreng Khas Yogyakarta',
+        portion: 1,
+        time: 120,
+        level: 'Sedang',
+        description: 'Ayam geprek adalah makanan ayam goreng tepung khas Indonesia yang diulek atau dilumatkan bersama sambal bajak...',
+      },
+      {
+        title: 'Nasi goreng Khas Yogyakarta',
+        portion: 1,
+        time: 120,
+        level: 'Sedang',
+        description: 'Ayam geprek adalah makanan ayam goreng tepung khas Indonesia yang diulek atau dilumatkan bersama sambal bajak...',
+      },
       // Add more requests as needed
     ];
   
@@ -54,6 +83,7 @@ const DashboardAdmin = () => {
         </div>
       </div>
     );
+    
   };
   
   export default DashboardAdmin;
