@@ -20,8 +20,8 @@ const Signup = () => {
       </Col>
       <Col md={6} className="d-flex flex-column align-items-center justify-content-center">
           <div className="text-center mb-4">
-            <img src="public/logo.jpeg" alt="Logo" style={{ width: '100px', marginBottom: '10px' }} />
-            <h4 style={{ color: '#0F172A', fontWeight: 'bold' }}>COOKING CANVAS</h4>
+            <img src="logo.jpeg" alt="Logo" style={{ width: '100px', marginBottom: '10px' }} />
+            <h4 style={{ color: '#0F172A', fontWeight: 'bold' }}>-- COOKING CANVAS --</h4>
           </div>
           <Card style={{ width: '100%', maxWidth: '400px' }} className="mb-3">
             <Card.Header className="text-center">
@@ -46,7 +46,7 @@ const Signup = () => {
                 </Button>
               </Form>
               <div className="text-center mt-3">
-                <a href="#" style={{ color: '#0F172A', fontWeight: 'bold' }}>already have an account? Log In</a>
+                <a href="#" style={{ color: '#0F172A', fontWeight: 'bold' }}>already have an account? Sign up</a>
               </div>
             </Card.Body>
           </Card>

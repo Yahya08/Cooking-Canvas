@@ -13,6 +13,7 @@ import Contact from './pages/Contact';
 import Signin from './pages/Signin';
 import Signup from './pages/Signup';
 import DasboardAdmin from './pages/DasboardAdmin';
+import DasboardUser from './pages/DasboardUser';
 
 
 
@@ -31,6 +32,7 @@ function App() {
       <Route path="/contact" Component={Contact}/>
       <Route path="/signup" Component={Signup}/>
       <Route path="/DasboardAdmin" Component={DasboardAdmin}/>
+      <Route path="/DasboardUser" Component={DasboardUser}/>
     </Routes>
 
     {/* <FooterComponent/> */}
