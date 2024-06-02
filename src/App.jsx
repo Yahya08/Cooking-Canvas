@@ -7,7 +7,7 @@ import NavbarComponent from './components/NavbarComponent';
 // import FooterComponent from './components/FooterComponent';
 import {Routes, Route} from 'react-router-dom';
 import HomePage from './pages/HomePage';
-import Product from './pages/Product';
+import Recipe from './pages/Recipe';
 import Aboutus from './pages/Aboutus';
 import Contact from './pages/Contact';
 import Signin from './pages/Signin';
@@ -29,7 +29,7 @@ function App() {
 
     <Routes>
       <Route path="/" Component={HomePage}/>
-      <Route path="/product" Component={Product}/>
+      <Route path="/Recipe" Component={Recipe}/>
       <Route path="/Aboutus" Component={Aboutus}/>
       <Route path="/signin" Component={Signin}/>
       <Route path="/contact" Component={Contact}/>

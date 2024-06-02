@@ -19,7 +19,7 @@ const Aboutus = () => {
           </Col>
           <Col md={4}>
             <img
-              src="https://png.pngtree.com/png-vector/20230726/ourmid/pngtree-coloring-pages-free-kids-printable-teddy-bear-drawing-in-pencil-cartoon-png-image_6746133.png" // Update with the correct path to your image
+              src="https://source.unsplash.com/800x600/?cooking" // Update with the correct path to your image
               alt="Pears"
               className="img-fluid"
             />

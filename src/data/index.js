@@ -29,7 +29,7 @@
 
 export const navLinks = [
     { id: 1, text: "Home", path: "/" },
-    { id: 2, text: "Product", path: "/product" },
+    { id: 2, text: "Recipe", path: "/recipe" },
     { id: 3, text: "About Us", path: "/aboutus"},
     { id: 4, text: "Contact", path: "/contact" },
     { id: 5, text: "Sign in", path: "/Signin" },
