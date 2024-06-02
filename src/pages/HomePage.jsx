@@ -11,7 +11,7 @@ const HomePage = () => {
         <Container>
           <h1 className="display-4">COOKING CANVAS</h1>
           <p className="lead">Temukan, bagikan, dan kembangkan kreativitas kuliner Anda!</p>
-          <Button className="btn-dark mt-3">Get Started</Button>
+          <Button href="/signin" className="btn-dark mt-3">Get Started</Button>
         </Container>
       </header>
       <section className="py-5">
@@ -105,7 +105,7 @@ const HomePage = () => {
         <Container>
           <h1 className="display-4">Gabung dan Mulai Memasak!</h1>
           <p className="lead">Bergabunglah dengan komunitas pecinta masak kami hari ini!</p>
-          <Button className="btn-dark mt-3" href="#join-us">Join Now</Button>
+          <Button className="btn-dark mt-3" href="/signin">Join Now</Button>
         </Container>
       </section>
 
@@ -122,18 +122,18 @@ const HomePage = () => {
           </Col>
           <Col md={4} className="d-flex justify-content-center">
             <div>
-              <a href="#" className="text-white mx-3">Home</a>
-              <a href="#" className="text-white mx-3">Recipe</a>
-              <a href="#" className="text-white mx-3">About Us</a>
-              <a href="#" className="text-white mx-3">Contact</a>
+              <a href="/HomePage" className="text-white mx-3">Home</a>
+              <a href="/Recipe" className="text-white mx-3">Recipe</a>
+              <a href="/Aboutus" className="text-white mx-3">About Us</a>
+              <a href="/Contact" className="text-white mx-3">Contact</a>
             </div>
           </Col>
           <Col md={4} className="d-flex justify-content-end">
             <div>
-              <a href="#" className="text-white mx-2"><FontAwesomeIcon icon={faFacebook} /></a>
-              <a href="#" className="text-white mx-2"><FontAwesomeIcon icon={faLinkedin} /></a>
-              <a href="#" className="text-white mx-2"><FontAwesomeIcon icon={faYoutube} /></a>
-              <a href="#" className="text-white mx-2"><FontAwesomeIcon icon={faInstagram} /></a>
+              <a href="https://www.facebook.com/" className="text-white mx-2"><FontAwesomeIcon icon={faFacebook} /></a>
+              <a href="https://www.linkedin.com/" className="text-white mx-2"><FontAwesomeIcon icon={faLinkedin} /></a>
+              <a href="https://www.youtube.com/" className="text-white mx-2"><FontAwesomeIcon icon={faYoutube} /></a>
+              <a href="https://www.instagram.com/" className="text-white mx-2"><FontAwesomeIcon icon={faInstagram} /></a>
             </div>
           </Col>
         </Row>

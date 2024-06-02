@@ -34,7 +34,7 @@ export const navLinks = [
     { id: 4, text: "Contact", path: "/contact" },
     { id: 5, text: "Sign in", path: "/Signin" },
     { id: 6, text: "Sign up", path: "/Signup" },
-    { id: 7, text: "Dasboard", path: "/DasboardAdmin" }
+    
 ];
 
 // export const semuaKelas = [

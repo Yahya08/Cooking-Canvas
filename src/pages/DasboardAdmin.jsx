@@ -45,9 +45,9 @@ const DashboardAdmin = () => {
     return (
       <div className="dashboard">
         <div className="sidebar">
-          <button>Permintaan</button>
-          <button>Tambah Resep</button>
-          <button>Edit Resep</button>
+          <a href="/DasboardPermintaanResep"><button>Permintaan</button></a>
+          <a href="/tambah-resep"><button>Tambah Resep</button></a>
+          <a href="/edit-resep"><button>Edit Resep</button></a>
         </div>
         <div className="content">
           <h1>Permintaan resep dari user</h1>
