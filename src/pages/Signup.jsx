@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import '../style/Signin.css';
+import '../style/Signup.css';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 
-const Signin = () => {
+const Signup = () => {
   const [formData, setFormData] = useState({
-    fullName: '',
+    nama_lengkap: '',
     username: '',
     email: '',
     password: ''
@@ -18,7 +18,7 @@ const Signin = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('YOUR_BACKEND_URL', {
+      const response = await fetch('function/signup_api.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -56,9 +56,9 @@ const Signin = () => {
             <h4 style={{ marginBottom: '10px', color: '#0F172A', fontWeight:'bold'  }}>Sign in to your account</h4>
             <p style={{ marginBottom: '20px', color: '#6c757d' }}>Enter your details below</p>
             <Form style={{ width: '100%' }} onSubmit={handleSubmit}>
-              <Form.Group controlId="fullName">
+              <Form.Group controlId="nama_lengkap">
                 <Form.Label>Nama Lengkap</Form.Label>
-                <Form.Control type="text" placeholder="Nama Lengkap" name="fullName" value={formData.fullName} onChange={handleChange} />
+                <Form.Control type="text" placeholder="full" name="nama_lengkap" value={formData.nama_lengkap} onChange={handleChange} />
               </Form.Group>
               <Form.Group controlId="username" style={{ marginTop: '20px' }}>
                 <Form.Label>Username</Form.Label>
@@ -84,4 +84,4 @@ const Signin = () => {
   );
 };
 
-export default Signin;
+export default Signup;
