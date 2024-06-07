@@ -1,11 +1,7 @@
-// import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
-// import './App.css'
-
+import { useLocation } from 'react-router-dom';
 import NavbarComponent from './components/NavbarComponent';
-// import FooterComponent from './components/FooterComponent';
-import {Routes, Route} from 'react-router-dom';
+import DasboardNavbarComponent from './components/DashboardNavbar'; // Pastikan import ini sudah benar
+import { Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import Recipe from './pages/Recipe';
 import Aboutus from './pages/Aboutus';
@@ -18,34 +14,33 @@ import DashboardPermintaanResep from './pages/DasboardPermintaanResep';
 import DasboardEditResep from './pages/DasboardEditResep';
 import RecipeDetailPage from './pages/RecipeDetailPage';
 
-
-
-
-
-
 function App() {
-  return <div>
-    <NavbarComponent/>
+  const location = useLocation();
 
-    <Routes>
-      <Route path="/" Component={HomePage}/>
-      <Route path="/Recipe" Component={Recipe}/>
-      <Route path="/Aboutus" Component={Aboutus}/>
-      <Route path="/signin" Component={Signin}/>
-      <Route path="/contact" Component={Contact}/>
-      <Route path="/signup" Component={Signup}/>
-      <Route path="/DasboardAdmin" Component={DasboardAdmin}/>
-      <Route path="/DasboardTambahResep" Component={DasboardTambahResep}/>
-      <Route path="/DasboardPermintaanResep" Component={DashboardPermintaanResep}/>
-      <Route path="/DasboardEditResep" Component={DasboardEditResep}/>
-      <Route path="/RecipeDetailPage" Component={RecipeDetailPage}/>
-      
-      
-    </Routes>
+  // Check if the current path starts with "/dashboard"
+  const isDashboard = location.pathname.startsWith('/dashboard');
 
-    {/* <FooterComponent/> */}
-     </div>;
-  
+  return (
+    <div>
+      {isDashboard ? <DasboardNavbarComponent /> : <NavbarComponent />}
+
+      <Routes>
+        <Route path="/" Component={HomePage} />
+        <Route path="/recipe" Component={Recipe} />
+        <Route path="/aboutus" Component={Aboutus} />
+        <Route path="/signin" Component={Signin} />
+        <Route path="/contact" Component={Contact} />
+        <Route path="/signup" Component={Signup} />
+        <Route path="/dashboardadmin" Component={DasboardAdmin} />
+        <Route path="/dashboardtambahresep" Component={DasboardTambahResep} />
+        <Route path="/dashboardpermintaanresep" Component={DashboardPermintaanResep} />
+        <Route path="/dashboardeditresep" Component={DasboardEditResep} />
+        <Route path="/recipedetailpage" Component={RecipeDetailPage} />
+      </Routes>
+
+      {/* <FooterComponent /> */}
+    </div>
+  );
 }
 
-export default App
+export default App;

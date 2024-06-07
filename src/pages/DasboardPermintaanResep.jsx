@@ -1,81 +1,57 @@
-import { useState } from 'react';
+import React from 'react';
 
-const DashboardPermintaanResep = () => {
-  const [resepData] = useState([
+const Dashboard = () => {
+  const recipes = [
     {
       title: 'Nasi goreng Khas Yogyakarta',
       portion: 1,
       time: 120,
       level: 'Sedang',
-      description: 'Nasi goreng Khas Yogyakarta adalah variasi nasi goreng yang memiliki cita rasa khas dengan bumbu dan rempah khas Yogyakarta.',
+      description: 'Ayam geprek adalah makanan ayam goreng tepung khas Indonesia yang diulek atau dilumatkan bersama sambal bajak. Sebagian besar sumber menyebut bahwa ayam geprek berasal dari Kota Yogyakarta.',
     },
-    {
-      title: 'Ayam Geprek',
-      portion: 1,
-      time: 30,
-      level: 'Mudah',
-      description: 'Ayam geprek adalah makanan ayam goreng tepung khas Indonesia yang dilulek atau dilumatkan bersama sambal bajak. Sebagian besar sumber menyebut bahwa ayam geprek berasal dari Kota Yogyakarta.',
-    },
-    // Tambahkan data resep lainnya di sini
-  ]);
+    // Add more recipe objects as needed
+  ];
 
   return (
-    <div className="container">
-      {/* <nav className="navbar">
-        <span className="navbar-brand mb-0 h1">Logo</span>
-        <button className="btn btn-outline-dark">Log Out</button>
-      </nav> */}
-
-      <div className="row mt-4">
-        <div className="col">
-          <button className="btn btn-outline-dark me-2">Permintaan</button>
-          <button className="btn btn-outline-dark me-2">Tambah Resep</button>
-          <button className="btn btn-outline-dark">Edit Resep</button>
-        </div>
-      </div>
-
-      <div className="row mt-4">
-        <div className="col">
-          <h2>Permintaan resep dari user</h2>
-          <table className="table">
-            <thead>
-              <tr>
-                <th>Title</th>
-                <th>Portion</th>
-                <th>Time (min)</th>
-                <th>Level</th>
-                <th>Description</th>
-                <th>Detail</th>
-                <th>Status</th>
+    <div className="container mt-5">
+      <h2 className="mb-4">Permintaan Resep Dari User</h2>
+      <div className="table-responsive">
+        <table className="table table-bordered">
+          <thead className="bg-light">
+            <tr>
+              <th>Title</th>
+              <th className="text-center">Portion</th>
+              <th className="text-center">Time</th>
+              <th className="text-center">Level</th>
+              <th>Description</th>
+              <th className="text-center">Detail</th>
+              <th className="text-center">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {recipes.map((recipe, index) => (
+              <tr key={index}>
+                <td>{recipe.title}</td>
+                <td className="text-center">{recipe.portion}</td>
+                <td className="text-center">{recipe.time}</td>
+                <td className="text-center">{recipe.level}</td>
+                <td>{recipe.description}</td>
+                <td className="text-center">
+                  <button className="btn btn-primary btn-sm me-2">Check</button>
+                </td>
+                <td className="text-center">
+                  <div className="d-flex justify-content-center">
+                    <button className="btn btn-success btn-sm me-2">Terima</button>
+                    <button className="btn btn-danger btn-sm">Tolak</button>
+                  </div>
+                </td>
               </tr>
-            </thead>
-            <tbody>
-              {resepData.map((resep, index) => (
-                <tr key={index}>
-                  <td>{resep.title}</td>
-                  <td>{resep.portion}</td>
-                  <td>{resep.time}</td>
-                  <td>{resep.level}</td>
-                  <td>{resep.description}</td>
-                  <td>
-                    <button className="btn btn-outline-primary me-2">Check</button>
-                  </td>
-                  <td>
-                    <div className="d-flex flex-column">
-                      <div className="d-flex">
-                        <button className="btn btn-outline-success me-2">Terima</button>
-                        <button className="btn btn-outline-danger">Tolak</button>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );
 };
 
-export default DashboardPermintaanResep;
+export default Dashboard;

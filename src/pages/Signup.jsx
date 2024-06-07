@@ -9,7 +9,7 @@ const Signup = () => {
         md={6}
         className="d-none d-md-flex align-items-center justify-content-center"
         style={{
-          backgroundColor: '#0F172A',
+          // backgroundColor: '#0F172A',
           backgroundImage: "url('https://source.unsplash.com/800x600/?cooking')",
           backgroundSize: 'cover',
           backgroundPosition: 'center',

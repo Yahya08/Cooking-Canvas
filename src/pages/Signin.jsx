@@ -9,7 +9,7 @@ const Signin = () => {
         md={6}
         className="d-none d-md-flex align-items-center justify-content-center"
         style={{
-          backgroundColor: '#0F172A',
+          // backgroundColor: '#0F172A',
           backgroundImage: "url('https://source.unsplash.com/800x600/?cooking')",
           backgroundSize: 'cover',
           backgroundPosition: 'center',
@@ -20,8 +20,7 @@ const Signin = () => {
       </Col>
       <Col md={6} className="d-flex flex-column align-items-center justify-content-center">
           <div className="text-center mb-4">
-            <img src="logo.jpeg" alt="Logo" style={{ width: '100px', marginBottom: '10px' }} />
-            <h4 style={{ color: '#0F172A', fontWeight: 'bold' }}>-- COOKING CANVAS --</h4>
+            <img src="logoheader.png" alt="Logo" style={{ width: '250px', marginBottom: '10px' }} />
           </div>
           <Card style={{ width: '100%', maxWidth: '400px' }} className="mb-3">
             <Card.Header className="text-center">
