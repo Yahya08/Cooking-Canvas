@@ -58,7 +58,7 @@ const Signup = () => {
             <Form style={{ width: '100%' }} onSubmit={handleSubmit}>
               <Form.Group controlId="nama_lengkap">
                 <Form.Label>Nama Lengkap</Form.Label>
-                <Form.Control type="text" placeholder="full" name="nama_lengkap" value={formData.nama_lengkap} onChange={handleChange} />
+                <Form.Control type="text" placeholder="fullname" name="nama_lengkap" value={formData.nama_lengkap} onChange={handleChange} />
               </Form.Group>
               <Form.Group controlId="username" style={{ marginTop: '20px' }}>
                 <Form.Label>Username</Form.Label>
