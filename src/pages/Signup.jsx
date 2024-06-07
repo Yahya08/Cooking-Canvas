@@ -1,7 +1,37 @@
+import React, { useState } from 'react';
 import '../style/Signin.css';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 
 const Signin = () => {
+  const [formData, setFormData] = useState({
+    fullName: '',
+    username: '',
+    email: '',
+    password: ''
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch('YOUR_BACKEND_URL', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+      const data = await response.json();
+      console.log(data); // You can handle response data here
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
   return (
     <Container fluid style={{ height: '100vh' }}>
       <Row className="h-100">
@@ -25,22 +55,22 @@ const Signin = () => {
           <div className="mb-4" style={{ textAlign: 'left', width: '100%', maxWidth: '400px', border: '1px solid #ced4da', borderRadius: '5px', padding: '20px' }}>
             <h4 style={{ marginBottom: '10px', color: '#0F172A', fontWeight:'bold'  }}>Sign in to your account</h4>
             <p style={{ marginBottom: '20px', color: '#6c757d' }}>Enter your details below</p>
-            <Form style={{ width: '100%' }}>
+            <Form style={{ width: '100%' }} onSubmit={handleSubmit}>
               <Form.Group controlId="fullName">
                 <Form.Label>Nama Lengkap</Form.Label>
-                <Form.Control type="text" placeholder="Nama Lengkap" />
+                <Form.Control type="text" placeholder="Nama Lengkap" name="fullName" value={formData.fullName} onChange={handleChange} />
               </Form.Group>
               <Form.Group controlId="username" style={{ marginTop: '20px' }}>
                 <Form.Label>Username</Form.Label>
-                <Form.Control type="text" placeholder="Username" />
+                <Form.Control type="text" placeholder="Username" name="username" value={formData.username} onChange={handleChange} />
               </Form.Group>
               <Form.Group controlId="email" style={{ marginTop: '20px' }}>
                 <Form.Label>Email</Form.Label>
-                <Form.Control type="email" placeholder="Email" defaultValue="m@example.com" />
+                <Form.Control type="email" placeholder="Email" name="email" value={formData.email} onChange={handleChange} />
               </Form.Group>
               <Form.Group controlId="password" style={{ marginTop: '20px' }}>
                 <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="Password" />
+                <Form.Control type="password" placeholder="Password" name="password" value={formData.password} onChange={handleChange} />
               </Form.Group>
               <Button variant="dark" type="submit" style={{ marginTop: '20px', width: '100%' }}>
                 Sign In
