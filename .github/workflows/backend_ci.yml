@@ -21,22 +21,15 @@ jobs:
       uses: shivammathur/setup-php@v2
       with:
         php-version: '8.0'
-        extension-csv: mbstring, intl, json, libxml, xml, xdebug
 
     - name: Memvalidasi Sintaks PHP
       run: |
-        # Inisialisasi penghitung error
-        JUMLAH_ERROR=0
         # Loop melalui semua file PHP dan periksa sintaks
         for file in $(find . -name "*.php"); do
           php -l $file
           if [ $? -ne 0 ]; then
-            JUMLAH_ERROR=$((JUMLAH_ERROR+1))
+            echo "Ditemukan kesalahan sintaks PHP."
+            exit 1
           fi
         done
-        # Keluar dengan error jika ada kesalahan sintaks
-        if [ $JUMLAH_ERROR -ne 0 ]; then
-          echo "Ditemukan kesalahan sintaks PHP."
-          exit 1
-        fi
-        echo "Tidak ada kesalahan sintaks PHP ditemukan."
+        echo "Tidak ada kesalahan sintaks PHP ditemukan.
