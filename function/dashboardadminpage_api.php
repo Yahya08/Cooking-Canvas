@@ -156,39 +156,35 @@ function postTambahResep($conn) {
     $id_resep = $stmt->insert_id;
     $stmt->close();
 
-    // Insert into alat_memasak, bahan_memasak, and cara_memasak tables
-    $alat = explode("\n", $input['alat']);
-    foreach ($alat as $isi_alat) {
-        $stmt = $conn->prepare("INSERT INTO alat_memasak (id_resep, isi_alat) VALUES (?, ?)");
-        $stmt->bind_param("is", $id_resep, $isi_alat);
-        if (!$stmt->execute()) {
-            echo json_encode(["error" => $stmt->error], JSON_PRETTY_PRINT);
-            exit;
-        }
-    }
+// Insert into alat_memasak, bahan_memasak, and cara_memasak tables
+$alat = is_array($input['alat']) ? implode("\n", $input['alat']) : $input['alat'];
+$stmt_alat = $conn->prepare("INSERT INTO alat_memasak (id_resep, isi_alat) VALUES (?, ?)");
+$stmt_alat->bind_param("is", $id_resep, $alat);
+if (!$stmt_alat->execute()) {
+    echo json_encode(["error" => $stmt_alat->error], JSON_PRETTY_PRINT);
+    exit;
+}
 
-    $bahan = explode("\n", $input['bahan']);
-    foreach ($bahan as $isi_bahan) {
-        $stmt = $conn->prepare("INSERT INTO bahan_memasak (id_resep, isi_bahan) VALUES (?, ?)");
-        $stmt->bind_param("is", $id_resep, $isi_bahan);
-        if (!$stmt->execute()) {
-            echo json_encode(["error" => $stmt->error], JSON_PRETTY_PRINT);
-            exit;
-        }
-    }
+// Repeat the same process for bahan and cara
+$bahan = is_array($input['bahan']) ? implode("\n", $input['bahan']) : $input['bahan'];
+$stmt_bahan = $conn->prepare("INSERT INTO bahan_memasak (id_resep, isi_bahan) VALUES (?, ?)");
+$stmt_bahan->bind_param("is", $id_resep, $bahan);
+if (!$stmt_bahan->execute()) {
+    echo json_encode(["error" => $stmt_bahan->error], JSON_PRETTY_PRINT);
+    exit;
+}
 
-    $cara = explode("\n", $input['cara']);
-    foreach ($cara as $isi_cara) {
-        $stmt = $conn->prepare("INSERT INTO cara_memasak (id_resep, isi_cara) VALUES (?, ?)");
-        $stmt->bind_param("is", $id_resep, $isi_cara);
-        if (!$stmt->execute()) {
-            echo json_encode(["error" => $stmt->error], JSON_PRETTY_PRINT);
-            exit;
-        }
-    }
+$cara = is_array($input['cara']) ? implode("\n", $input['cara']) : $input['cara'];
+$stmt_cara = $conn->prepare("INSERT INTO cara_memasak (id_resep, isi_cara) VALUES (?, ?)");
+$stmt_cara->bind_param("is", $id_resep, $cara);
+if (!$stmt_cara->execute()) {
+    echo json_encode(["error" => $stmt_cara->error], JSON_PRETTY_PRINT);
+    exit;
+}
 
     echo json_encode(["message" => "Resep berhasil ditambahkan"], JSON_PRETTY_PRINT);
 }
+
 
 // UPDATE RESEP (POST)
 function postUpdateResep($conn, $id_resep) {

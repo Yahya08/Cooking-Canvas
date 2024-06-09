@@ -5,4 +5,4 @@ $password = "";
 $dbname = "cooking_canvas";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
-?>
+?>  
