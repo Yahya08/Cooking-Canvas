@@ -77,7 +77,7 @@ const Signup = () => {
               </Button>
             </Form>
           </div>
-          <p style={{ marginTop: '20px' }}>Don't have an account yet? <a href="#" style={{ color: 'inherit', fontWeight: 'bold' }}>Sign In</a></p>
+          <p style={{ marginTop: '5px' }}>Don't have an account yet? <a href="#" style={{ color: 'inherit', fontWeight: 'bold' }}>Sign In</a></p>
         </Col>
       </Row>
     </Container>

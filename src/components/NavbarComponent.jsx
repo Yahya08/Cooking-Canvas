@@ -32,7 +32,7 @@ const NavbarComponent = () => {
     >
       <Container>
         <Navbar.Brand href="#home" className="fs-3 fw-bold">
-          <img src="/logo.jpeg" height="40" alt="Logo" />
+          <img src="/cooking-canvas-logo.svg" height="40" alt="Logo" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
