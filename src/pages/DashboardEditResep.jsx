@@ -14,7 +14,7 @@ const Dashboard = () => {
 
   return (
     <div className="container mt-5">
-      <h2 className="mb-4">Edit Resep</h2>
+      <h2 className="mb-4 fw-bold">Edit Resep</h2>
       <div className="table-responsive">
         <table className="table table-bordered">
           <thead className="bg-light">

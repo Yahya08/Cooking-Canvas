@@ -8,10 +8,10 @@ import Aboutus from './pages/Aboutus';
 import Contact from './pages/Contact';
 import Signin from './pages/Signin';
 import Signup from './pages/Signup';
-import DasboardAdmin from './pages/DasboardAdmin';
-import DasboardTambahResep from './pages/DasboardTambahResep';
-import DashboardPermintaanResep from './pages/DasboardPermintaanResep';
-import DasboardEditResep from './pages/DasboardEditResep';
+import DashboardAdmin from './pages/DashboardAdmin';
+import DashboardTambahResep from './pages/DashboardTambahResep';
+import DashboardPermintaanResep from './pages/DashboardPermintaanResep';
+import DashboardEditResep from './pages/DashboardEditResep';
 import RecipeDetailPage from './pages/RecipeDetailPage';
 
 function App() {
@@ -31,10 +31,10 @@ function App() {
         <Route path="/signin" Component={Signin} />
         <Route path="/contact" Component={Contact} />
         <Route path="/signup" Component={Signup} />
-        <Route path="/dashboardadmin" Component={DasboardAdmin} />
-        <Route path="/dashboardtambahresep" Component={DasboardTambahResep} />
+        <Route path="/dashboardadmin" Component={DashboardAdmin} />
+        <Route path="/dashboardtambahresep" Component={DashboardTambahResep} />
         <Route path="/dashboardpermintaanresep" Component={DashboardPermintaanResep} />
-        <Route path="/dashboardeditresep" Component={DasboardEditResep} />
+        <Route path="/dashboardeditresep" Component={DashboardEditResep} />
         <Route path="/recipedetailpage" Component={RecipeDetailPage} />
       </Routes>
 

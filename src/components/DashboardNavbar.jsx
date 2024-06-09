@@ -3,9 +3,18 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom';
 
 const NavigationBar = () => {
   const [logoutHovered, setLogoutHovered] = useState(false);
+  const [permintaanClicked, setPermintaanClicked] = useState(false);
+  const [tambahResepClicked, setTambahResepClicked] = useState(false);
+  const [editResepClicked, setEditResepClicked] = useState(false);
+
+  // Hover state for navigation buttons
+  const [permintaanHovered, setPermintaanHovered] = useState(false);
+  const [tambahResepHovered, setTambahResepHovered] = useState(false);
+  const [editResepHovered, setEditResepHovered] = useState(false);
 
   const handleLogoutHover = () => {
     setLogoutHovered(true);
@@ -15,12 +24,30 @@ const NavigationBar = () => {
     setLogoutHovered(false);
   };
 
+  const handlePermintaanClick = () => {
+    setPermintaanClicked(true);
+    setTambahResepClicked(false);
+    setEditResepClicked(false);
+  };
+
+  const handleTambahResepClick = () => {
+    setTambahResepClicked(true);
+    setPermintaanClicked(false);
+    setEditResepClicked(false);
+  };
+
+  const handleEditResepClick = () => {
+    setEditResepClicked(true);
+    setPermintaanClicked(false);
+    setTambahResepClicked(false);
+  };
+
   return (
     <Navbar bg="light" expand="lg">
       <Container>
-      <Navbar.Brand href="#home">
+        <Navbar.Brand href="#home">
           <img
-            src="logo4.svg" // Ubah path/to/logo4.svg sesuai dengan lokasi file SVG Anda
+            src="logo4.svg"
             width="100"
             height="30"
             className="d-inline-block align-top"
@@ -30,9 +57,48 @@ const NavigationBar = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav" className="justify-content-center">
           <Nav>
-            <Nav.Link href="#permintaan" className="mx-3" style={{ color: '#0F172A' }}>Permintaan</Nav.Link>
-            <Nav.Link href="#tambah-resep" className="mx-3" style={{ color: '#0F172A' }}>Tambah Resep</Nav.Link>
-            <Nav.Link href="#edit-resep" className="mx-3" style={{ color: '#0F172A' }}>Edit Resep</Nav.Link>
+            <Nav.Link
+              as={Link}
+              to="/dashboardpermintaanresep"
+              className="mx-3"
+              style={{
+                color: (permintaanClicked || permintaanHovered) ? '#ffffff' : '#0F172A',
+                backgroundColor: (permintaanClicked || permintaanHovered) ? '#0F172A' : 'transparent'
+              }}
+              onClick={handlePermintaanClick}
+              onMouseEnter={() => setPermintaanHovered(true)}
+              onMouseLeave={() => setPermintaanHovered(false)}
+            >
+              Permintaan
+            </Nav.Link>
+            <Nav.Link
+              as={Link}
+              to="/dashboardtambahresep"
+              className="mx-3"
+              style={{
+                color: (tambahResepClicked || tambahResepHovered) ? '#ffffff' : '#0F172A',
+                backgroundColor: (tambahResepClicked || tambahResepHovered) ? '#0F172A' : 'transparent'
+              }}
+              onClick={handleTambahResepClick}
+              onMouseEnter={() => setTambahResepHovered(true)}
+              onMouseLeave={() => setTambahResepHovered(false)}
+            >
+              Tambah Resep
+            </Nav.Link>
+            <Nav.Link
+              as={Link}
+              to="/dashboardeditresep"
+              className="mx-3"
+              style={{
+                color: (editResepClicked || editResepHovered) ? '#ffffff' : '#0F172A',
+                backgroundColor: (editResepClicked || editResepHovered) ? '#0F172A' : 'transparent'
+              }}
+              onClick={handleEditResepClick}
+              onMouseEnter={() => setEditResepHovered(true)}
+              onMouseLeave={() => setEditResepHovered(false)}
+            >
+              Edit Resep
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
         <Button
@@ -40,11 +106,11 @@ const NavigationBar = () => {
           className="ms-auto"
           style={{
             color: logoutHovered ? '#ffffff' : '#000000',
-            backgroundColor: logoutHovered ? '#000000' : 'transparent',
-            border: '1px solid #000000', // Border hitam
-            transition: 'background-color 0.3s, color 0.3s' // Transisi warna saat hover
+            backgroundColor: logoutHovered ? '#0F172A' : 'transparent',
+            border: '1px solid #0F172A',
+            transition: 'background-color 0.3s, color 0.3s'
           }}
-          onMouseOver={handleLogoutHover}
+          onMouseEnter={handleLogoutHover}
           onMouseLeave={handleLogoutLeave}
         >
           Log Out

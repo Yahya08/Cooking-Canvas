@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+
 function DasboardTambahResep() {
   const [judul, setJudul] = useState('');
   const [waktu, setWaktu] = useState('');
@@ -33,7 +34,7 @@ function DasboardTambahResep() {
     <div className="container mt-5">
       <div className="row mt-4">
         <div className="col">
-          <h2>Tambah Resep</h2>
+          <h2 className='mb-4 fw-bold'>Tambah Resep</h2>
           <form onSubmit={handleSubmit}>
             <div className="mb-3">
               <label htmlFor="judul" className="form-label">Judul</label>
