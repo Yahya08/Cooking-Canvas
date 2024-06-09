@@ -1,20 +1,76 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 const Dashboard = () => {
-  const recipes = [
-    {
-      title: 'Nasi goreng Khas Yogyakarta',
-      portion: 1,
-      time: 120,
-      level: 'Sedang',
-      description: 'Ayam geprek adalah makanan ayam goreng tepung khas Indonesia yang diulek atau dilumatkan bersama sambal bajak. Sebagian besar sumber menyebut bahwa ayam geprek berasal dari Kota Yogyakarta.',
-    },
-    // Add more recipe objects as needed
-  ];
+  const [recipes, setRecipes] = useState([]);
+
+  useEffect(() => {
+    fetch('function/dashboardadminpage_api.php/permintaan')
+      .then(response => response.json())
+      .then(data => {
+        // Urutkan data berdasarkan id_resep
+        const sortedData = data.sort((a, b) => a.id_resep - b.id_resep);
+
+        const formattedRecipes = sortedData.map(item => ({
+          id: item.id_resep,
+          title: item.judul_resep,
+          portion: item.porsi_masakan,
+          time: item.waktu_memasak,
+          level: item.kesulitan_memasak,
+          description: item.deskripsi_resep,
+        }));
+
+        setRecipes(formattedRecipes);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+  }, []);
+
+  const handleAccept = (id) => {
+    fetch(`function/dashboardadminpage_api.php/terima-resep/${id}`, {
+      method: 'POST',
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      // Jika berhasil, refresh data
+      return response.json();
+    })
+    .then(data => {
+      // Refresh data setelah berhasil
+      const updatedRecipes = recipes.filter(recipe => recipe.id !== id);
+      setRecipes(updatedRecipes);
+    })
+    .catch(error => {
+      console.error('Error accepting recipe:', error);
+    });
+  };
+
+  const handleReject = (id) => {
+    fetch(`function/dashboardadminpage_api.php/tolak-resep/${id}`, {
+      method: 'POST',
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      // Jika berhasil, refresh data
+      return response.json();
+    })
+    .then(data => {
+      // Refresh data setelah berhasil
+      const updatedRecipes = recipes.filter(recipe => recipe.id !== id);
+      setRecipes(updatedRecipes);
+    })
+    .catch(error => {
+      console.error('Error rejecting recipe:', error);
+    });
+  };
 
   return (
     <div className="container mt-5">
-      <h2 className="mb-4 fw-bold">Permintaan Resep Dari User</h2>
+      <h2 className="mb-4">Permintaan Resep Dari User</h2>
       <div className="table-responsive">
         <table className="table table-bordered">
           <thead className="bg-light">
@@ -41,8 +97,8 @@ const Dashboard = () => {
                 </td>
                 <td className="text-center">
                   <div className="d-flex justify-content-center">
-                    <button className="btn btn-success btn-sm me-2">Terima</button>
-                    <button className="btn btn-danger btn-sm">Tolak</button>
+                    <button className="btn btn-success btn-sm me-2" onClick={() => handleAccept(recipe.id)}>Terima</button>
+                    <button className="btn btn-danger btn-sm" onClick={() => handleReject(recipe.id)}>Tolak</button>
                   </div>
                 </td>
               </tr>

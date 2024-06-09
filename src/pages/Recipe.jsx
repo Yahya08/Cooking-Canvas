@@ -65,7 +65,7 @@ const Recipe = () => {
           <Col md={4} className="d-flex align-items-center">
 
         
-            <img src="public/logoheader.png" alt="Cooking Canvas Logo" style={{ height: '50px', marginRight: '10px' }} />
+            <img src="logoheader.png" alt="Cooking Canvas Logo" style={{ height: '50px', marginRight: '10px' }} />
             {/* <h5>COOKING CANVAS</h5> */}
           </Col>
           <Col md={4} className="d-flex justify-content-center">
