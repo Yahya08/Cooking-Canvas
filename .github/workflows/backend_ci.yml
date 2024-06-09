@@ -14,14 +14,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Mengambil repositori
+    - name: Mengambil Repositori
       uses: actions/checkout@v2
 
     - name: Menyiapkan PHP
       uses: shivammathur/setup-php@v2
       with:
         php-version: '8.0'
-        extension-csv: mbstring, intl, json, libxml, xml, xdebug
 
-    - name: Memvalidasi sintaks PHP
-      run: find . -name "*.php" -exec php -l {} \;
+    - name: Memvalidasi Sintaks PHP
+      run: |
+        for file in $(find . -name "*.php"); do
+          php -l $file
+          if [ $? -ne 0 ]; then
+            echo "Ditemukan kesalahan sintaks PHP."
+            exit 1
+          fi
+        done
+        echo "Tidak ada kesalahan sintaks PHP ditemukan."
