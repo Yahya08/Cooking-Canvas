@@ -32,4 +32,4 @@ jobs:
             exit 1
           fi
         done
-        echo "Tidak ada kesalahan sintaks PHP ditemukan.
+        echo "Tidak ada kesalahan sintaks PHP ditemukan."
