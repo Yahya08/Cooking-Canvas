@@ -44,7 +44,7 @@ if ($id_admin) {
             "message" => "Gagal memperbarui status login admin"
         ];
     }
-    $stmt->close();
+    $stmt->close()
 }
 
 // Menutup koneksi
