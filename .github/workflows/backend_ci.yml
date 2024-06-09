@@ -29,7 +29,7 @@ jobs:
           php -l $file
           if [ $? -ne 0 ]; then
             echo "Ditemukan kesalahan sintaks PHP."
-            exit 1
+            exit 2
           fi
         done
         echo "Tidak ada kesalahan sintaks PHP ditemukan."
