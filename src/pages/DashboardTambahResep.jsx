@@ -13,39 +13,35 @@ function DasboardTambahResep() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
-    const data = {
-      judul_resep: judul,
-      waktu_memasak: waktu,
-      porsi_masakan: porsi,
-      kesulitan_memasak: level,
-      deskripsi_resep: deskripsi,
-      alat: alat.split('\n'), // Ubah menjadi array
-      bahan: bahan.split('\n'), // Ubah menjadi array
-      cara: instruksi.split('\n'), // Ubah menjadi array
-      foto_masakan: gambarResep
-    };
-  
+    
+    // Create a FormData object
+    const formData = new FormData();
+    formData.append('judul_resep', judul);
+    formData.append('waktu_memasak', waktu);
+    formData.append('porsi_masakan', porsi);
+    formData.append('kesulitan_memasak', level);
+    formData.append('deskripsi_resep', deskripsi);
+    formData.append('alat', alat);
+    formData.append('bahan', bahan);
+    formData.append('cara', instruksi);
+    formData.append('foto_masakan', gambarResep);
+
     try {
       const response = await fetch('function/dashboardadminpage_api.php/tambah-resep', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
+        body: formData
       });
-  
+
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
-  
+
       const responseData = await response.json();
       console.log('Response:', responseData);
     } catch (error) {
       console.error('Error:', error);
     }
   };
-  
 
   const handleGambarChange = (e) => {
     setGambarResep(e.target.files[0]);
