@@ -147,7 +147,7 @@ function postTambahResep($conn) {
     $input = json_decode(file_get_contents('php://input'), true);
     if (!isset($input['judul_resep'], $input['waktu_memasak'], $input['porsi_masakan'], $input['kesulitan_memasak'], $input['alat'], $input['bahan'], $input['cara'], $input['deskripsi_resep'])) {
         echo json_encode(["error" => "Input tidak lengkap"], JSON_PRETTY_PRINT);
-        exit
+        exit;
     }
 
     // Memecah baris baru menjadi array untuk alat, bahan, dan cara
