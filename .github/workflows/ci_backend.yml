@@ -1,17 +1,27 @@
-name: PHP CI
+name: PHP CI Branch Master
 
 on:
   push:
     branches:
-      - backend
+      - master
+  pull_request:
+    branches:
+      - master
 
 jobs:
-  test:
+  pemeriksaan-sintaks:
+
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
+    - name: Mengambil repositori
       uses: actions/checkout@v2
 
-    - name: Run PHP lint
-      run: php -l .
+    - name: Menyiapkan PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.0'
+        extension-csv: mbstring, intl, json, libxml, xml, xdebug
+
+    - name: Memvalidasi sintaks PHP
+      run: find . -name "*.php" -exec php -l {} \;
