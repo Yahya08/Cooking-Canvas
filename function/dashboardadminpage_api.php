@@ -145,45 +145,53 @@ function postTolakResep($conn, $id_resep) {
 // TAMBAH RESEP (POST)
 function postTambahResep($conn) {
     $input = json_decode(file_get_contents('php://input'), true);
-
-    // Insert into resep table
-    $stmt = $conn->prepare("INSERT INTO resep (judul_resep, waktu_memasak, porsi_masakan, deskripsi_resep, id_admin, foto_masakan, kesulitan_memasak) VALUES (?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("siisiss", $input['judul_resep'], $input['waktu_memasak'], $input['porsi_masakan'], $input['deskripsi_resep'], $input['id_admin'], $input['foto_masakan'], $input['kesulitan_memasak']);
-    if (!$stmt->execute()) {
-        echo json_encode(["error" => $stmt->error], JSON_PRETTY_PRINT);
-        exit;
+    if (!isset($input['judul_resep'], $input['waktu_memasak'], $input['porsi_masakan'], $input['kesulitan_memasak'], $input['alat'], $input['bahan'], $input['cara'], $input['deskripsi_resep'])) {
+        echo json_encode(["error" => "Input tidak lengkap"], JSON_PRETTY_PRINT);
+        exit
     }
-    $id_resep = $stmt->insert_id;
+
+    // Memecah baris baru menjadi array untuk alat, bahan, dan cara
+    $alat = $input['alat'];
+    $bahan = $input['bahan'];
+    $cara = $input['cara'];
+
+    $stmt = $conn->prepare("INSERT INTO resep (judul_resep, waktu_memasak, porsi_masakan, kesulitan_memasak, deskripsi_resep) VALUES (?, ?, ?, ?, ?)");
+    $stmt->bind_param("ssiss", $input['judul_resep'], $input['waktu_memasak'], $input['porsi_masakan'], $input['kesulitan_memasak'], $input['deskripsi_resep']);
+    if ($stmt->execute()) {
+        $id_resep = $stmt->insert_id;
+
+        // Menyimpan alat
+        foreach ($alat as $item) {
+            $stmt_alat = $conn->prepare("INSERT INTO alat_memasak (id_resep, isi_alat) VALUES (?, ?)");
+            $stmt_alat->bind_param("is", $id_resep, $item);
+            $stmt_alat->execute();
+            $stmt_alat->close();
+        }
+
+        // Menyimpan bahan
+        foreach ($bahan as $item) {
+            $stmt_bahan = $conn->prepare("INSERT INTO bahan_memasak (id_resep, isi_bahan) VALUES (?, ?)");
+            $stmt_bahan->bind_param("is", $id_resep, $item);
+            $stmt_bahan->execute();
+            $stmt_bahan->close();
+        }
+
+        // Menyimpan cara
+        foreach ($cara as $item) {
+            $stmt_cara = $conn->prepare("INSERT INTO cara_memasak (id_resep, isi_cara) VALUES (?, ?)");
+            $stmt_cara->bind_param("is", $id_resep, $item);
+            $stmt_cara->execute();
+            $stmt_cara->close();
+        }
+
+        echo json_encode(["message" => "Resep berhasil ditambahkan"], JSON_PRETTY_PRINT);
+    } else {
+        echo json_encode(["error" => $stmt->error], JSON_PRETTY_PRINT);
+    }
+
     $stmt->close();
-
-// Insert into alat_memasak, bahan_memasak, and cara_memasak tables
-$alat = is_array($input['alat']) ? implode("\n", $input['alat']) : $input['alat'];
-$stmt_alat = $conn->prepare("INSERT INTO alat_memasak (id_resep, isi_alat) VALUES (?, ?)");
-$stmt_alat->bind_param("is", $id_resep, $alat);
-if (!$stmt_alat->execute()) {
-    echo json_encode(["error" => $stmt_alat->error], JSON_PRETTY_PRINT);
-    exit;
 }
 
-// Repeat the same process for bahan and cara
-$bahan = is_array($input['bahan']) ? implode("\n", $input['bahan']) : $input['bahan'];
-$stmt_bahan = $conn->prepare("INSERT INTO bahan_memasak (id_resep, isi_bahan) VALUES (?, ?)");
-$stmt_bahan->bind_param("is", $id_resep, $bahan);
-if (!$stmt_bahan->execute()) {
-    echo json_encode(["error" => $stmt_bahan->error], JSON_PRETTY_PRINT);
-    exit;
-}
-
-$cara = is_array($input['cara']) ? implode("\n", $input['cara']) : $input['cara'];
-$stmt_cara = $conn->prepare("INSERT INTO cara_memasak (id_resep, isi_cara) VALUES (?, ?)");
-$stmt_cara->bind_param("is", $id_resep, $cara);
-if (!$stmt_cara->execute()) {
-    echo json_encode(["error" => $stmt_cara->error], JSON_PRETTY_PRINT);
-    exit;
-}
-
-    echo json_encode(["message" => "Resep berhasil ditambahkan"], JSON_PRETTY_PRINT);
-}
 
 
 // UPDATE RESEP (POST)
