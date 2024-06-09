@@ -1,0 +1,27 @@
+name: PHP CI Branch Backend
+
+on:
+  push:
+    branches:
+      - backend
+  pull_request:
+    branches:
+      - backend
+
+jobs:
+  pemeriksaan-sintaks:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Mengambil repositori
+      uses: actions/checkout@v2
+
+    - name: Menyiapkan PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.0'
+        extension-csv: mbstring, intl, json, libxml, xml, xdebug
+
+    - name: Memvalidasi sintaks PHP
+      run: find . -name "*.php" -exec php -l {} \;
