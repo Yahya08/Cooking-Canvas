@@ -3,27 +3,28 @@ import '../style/Signin.css';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 
 const Signin = () => {
-  const [email, setEmail] = useState('');
+  const [identifier, setIdentifier] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      const response = await fetch('your-backend-url/login', {
+      const response = await fetch('function/signin_api.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ identifier, password }),
       });
 
       if (response.ok) {
         // Handle successful login, e.g., redirect to dashboard
-        console.log('Login successful');
+        const data = await response.json();
+        console.log('Mendapat Response JSON data', data);
       } else {
         // Handle failed login, e.g., display error message
-        console.error('Login failed');
+        console.error('Gagal mendapat response');
       }
     } catch (error) {
       console.error('Error:', error);
@@ -56,11 +57,11 @@ const Signin = () => {
             <Form onSubmit={handleSubmit} style={{ width: '100%' }}>
               <Form.Group controlId="email">
                 <Form.Label style={{ color: '#0F172A', textAlign: 'left', width: '100%' }}>Email</Form.Label>
-                <Form.Control type="email" placeholder="" value={email} onChange={(e) => setEmail(e.target.value)} />
+                <Form.Control type="email" name="identifier" placeholder="" value={identifier} onChange={(e) => setIdentifier(e.target.value)} />
               </Form.Group>
               <Form.Group controlId="password" style={{ marginTop: '20px' }}>
                 <Form.Label style={{ color: '#0F172A', textAlign: 'left', width: '100%' }}>Password</Form.Label>
-                <Form.Control type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                <Form.Control type="password" name="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
               </Form.Group>
               <Button variant="dark" type="submit" style={{ marginTop: '20px', width: '100%' }}>
                 Sign In
