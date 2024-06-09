@@ -53,7 +53,7 @@ const Signup = () => {
             <img src="logo3.svg" alt="Logo" style={{ width: '200px', marginBottom: '10px' }} />
           </div>
           <div className="mb-4" style={{ textAlign: 'left', width: '100%', maxWidth: '400px', border: '1px solid #ced4da', borderRadius: '5px', padding: '20px' }}>
-            <h4 style={{ marginBottom: '10px', color: '#0F172A', fontWeight:'bold'  }}>Sign in to your account</h4>
+            <h4 style={{ marginBottom: '10px', color: '#0F172A', fontWeight:'bold'  }}>Sign up to your account</h4>
             <p style={{ marginBottom: '20px', color: '#6c757d' }}>Enter your details below</p>
             <Form style={{ width: '100%' }} onSubmit={handleSubmit}>
               <Form.Group controlId="nama_lengkap">
@@ -73,11 +73,11 @@ const Signup = () => {
                 <Form.Control type="password" placeholder="Password" name="password" value={formData.password} onChange={handleChange} />
               </Form.Group>
               <Button variant="dark" type="submit" style={{ marginTop: '20px', width: '100%' }}>
-                Sign In
+                Sign Up
               </Button>
             </Form>
           </div>
-          <p style={{ marginTop: '20px' }}>Don't have an account yet? <a href="#" style={{ color: 'inherit', fontWeight: 'bold' }}>Sign up</a></p>
+          <p style={{ marginTop: '20px' }}>Don't have an account yet? <a href="#" style={{ color: 'inherit', fontWeight: 'bold' }}>Sign In</a></p>
         </Col>
       </Row>
     </Container>
