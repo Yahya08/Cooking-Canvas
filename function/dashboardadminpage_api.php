@@ -143,131 +143,101 @@ function postTolakResep($conn, $id_resep) {
 }
 
 // TAMBAH RESEP (POST)
+// Menerima Input Form
 function postTambahResep($conn) {
-    $input = json_decode(file_get_contents('php://input'), true);
-    if (!isset($input['judul_resep'], $input['waktu_memasak'], $input['porsi_masakan'], $input['kesulitan_memasak'], $input['alat'], $input['bahan'], $input['cara'], $input['deskripsi_resep'])) {
-        echo json_encode(["error" => "Input tidak lengkap"], JSON_PRETTY_PRINT);
+    // Memvalidasi field POST yang wajib diisi
+    $required_fields = ['judul_resep', 'waktu_memasak', 'porsi_masakan', 'kesulitan_memasak', 'deskripsi_resep', 'alat', 'bahan', 'cara'];
+    foreach ($required_fields as $field) {
+        if (!isset($_POST[$field]) || empty(trim($_POST[$field]))) {
+            // Mengembalikan error jika ada field yang tidak diisi
+            echo json_encode(["error" => "Field '$field' is required"], JSON_PRETTY_PRINT);
+            exit;
+        }
+    }
+
+    // Memvalidasi dan menangani file yang diunggah
+    if (!isset($_FILES['foto_masakan'])) {
+        // Mengembalikan error jika file foto_masakan tidak diunggah
+        echo json_encode(["error" => "Field 'foto_masakan' is required"], JSON_PRETTY_PRINT);
         exit;
     }
 
-    // Memecah baris baru menjadi array untuk alat, bahan, dan cara
-    $alat = $input['alat'];
-    $bahan = $input['bahan'];
-    $cara = $input['cara'];
+    $foto_masakan = $_FILES['foto_masakan'];
+    $foto_masakan_path = null;
+    if ($foto_masakan['error'] == UPLOAD_ERR_OK) {
+        // Menentukan direktori untuk menyimpan file yang diunggah
+        $upload_dir = 'uploads/';
+        if (!is_dir($upload_dir)) {
+            mkdir($upload_dir, 0755, true); // Membuat direktori jika belum ada
+        }
 
-    $stmt = $conn->prepare("INSERT INTO resep (judul_resep, waktu_memasak, porsi_masakan, kesulitan_memasak, deskripsi_resep) VALUES (?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssiss", $input['judul_resep'], $input['waktu_memasak'], $input['porsi_masakan'], $input['kesulitan_memasak'], $input['deskripsi_resep']);
+        // Menentukan path untuk menyimpan file
+        $foto_masakan_path = $upload_dir . basename($foto_masakan['name']);
+        if (!move_uploaded_file($foto_masakan['tmp_name'], $foto_masakan_path)) {
+            // Mengembalikan error jika gagal mengunggah file
+            echo json_encode(["error" => "Failed to upload 'foto_masakan'"], JSON_PRETTY_PRINT);
+            exit;
+        }
+    } else {
+        // Mengembalikan error jika terjadi kesalahan saat mengunggah file
+        echo json_encode(["error" => "Error uploading 'foto_masakan': " . $foto_masakan['error']], JSON_PRETTY_PRINT);
+        exit;
+    }
+
+    // Mempersiapkan dan mengeksekusi perintah SQL untuk menambahkan resep utama
+    $stmt = $conn->prepare("INSERT INTO resep (judul_resep, waktu_memasak, porsi_masakan, kesulitan_memasak, deskripsi_resep, foto_masakan) VALUES (?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("siisss", $_POST['judul_resep'], $_POST['waktu_memasak'], $_POST['porsi_masakan'], $_POST['kesulitan_memasak'], $_POST['deskripsi_resep'], $foto_masakan_path);
     if ($stmt->execute()) {
-        $id_resep = $stmt->insert_id;
+        $id_resep = $stmt->insert_id; // Mendapatkan ID resep yang baru ditambahkan
+        $stmt->close();
 
-        // Menyimpan alat
+        // Menambahkan data alat_memasak
+        $alat = explode("\n", $_POST['alat']);
         foreach ($alat as $item) {
             $stmt_alat = $conn->prepare("INSERT INTO alat_memasak (id_resep, isi_alat) VALUES (?, ?)");
             $stmt_alat->bind_param("is", $id_resep, $item);
-            $stmt_alat->execute();
+            if (!$stmt_alat->execute()) {
+                // Mengembalikan error jika gagal menambahkan data alat_memasak
+                echo json_encode(["error" => $stmt_alat->error], JSON_PRETTY_PRINT);
+                exit;
+            }
             $stmt_alat->close();
         }
 
-        // Menyimpan bahan
+        // Menambahkan data bahan_memasak
+        $bahan = explode("\n", $_POST['bahan']);
         foreach ($bahan as $item) {
             $stmt_bahan = $conn->prepare("INSERT INTO bahan_memasak (id_resep, isi_bahan) VALUES (?, ?)");
             $stmt_bahan->bind_param("is", $id_resep, $item);
-            $stmt_bahan->execute();
+            if (!$stmt_bahan->execute()) {
+                // Mengembalikan error jika gagal menambahkan data bahan_memasak
+                echo json_encode(["error" => $stmt_bahan->error], JSON_PRETTY_PRINT);
+                exit;
+            }
             $stmt_bahan->close();
         }
 
-        // Menyimpan cara
+        // Menambahkan data cara_memasak
+        $cara = explode("\n", $_POST['cara']);
         foreach ($cara as $item) {
             $stmt_cara = $conn->prepare("INSERT INTO cara_memasak (id_resep, isi_cara) VALUES (?, ?)");
             $stmt_cara->bind_param("is", $id_resep, $item);
-            $stmt_cara->execute();
+            if (!$stmt_cara->execute()) {
+                // Mengembalikan error jika gagal menambahkan data cara_memasak
+                echo json_encode(["error" => $stmt_cara->error], JSON_PRETTY_PRINT);
+                exit;
+            }
             $stmt_cara->close();
         }
 
+        // Mengembalikan pesan sukses jika resep berhasil ditambahkan
         echo json_encode(["message" => "Resep berhasil ditambahkan"], JSON_PRETTY_PRINT);
     } else {
+        // Mengembalikan error jika gagal menambahkan resep utama
         echo json_encode(["error" => $stmt->error], JSON_PRETTY_PRINT);
-    }
-
-    $stmt->close();
-}
-
-
-
-// UPDATE RESEP (POST)
-function postUpdateResep($conn, $id_resep) {
-    $input = json_decode(file_get_contents('php://input'), true);
-
-    $stmt = $conn->prepare("UPDATE resep SET judul_resep = ?, waktu_memasak = ?, porsi_masakan = ?, deskripsi_resep = ?, foto_masakan = ?, kesulitan_memasak = ? WHERE id_resep = ?");
-    $stmt->bind_param("siisssi", $input['judul_resep'], $input['waktu_memasak'], $input['porsi_masakan'], $input['deskripsi_resep'], $input['foto_masakan'], $input['kesulitan_memasak'], $id_resep);
-    if ($stmt->execute()) {
         $stmt->close();
-
-        // Update alat_memasak, bahan_memasak, and cara_memasak tables
-        if (isset($input['isi_alat'])) {
-            // Delete existing alat
-            $stmt = $conn->prepare("DELETE FROM alat_memasak WHERE id_resep = ?");
-            $stmt->bind_param("i", $id_resep);
-            $stmt->execute();
-            $stmt->close();
-
-            // Insert new alat
-            $alat = explode("\n", $input['isi_alat']);
-            foreach ($alat as $isi_alat) {
-                $stmt = $conn->prepare("INSERT INTO alat_memasak (id_resep, isi_alat) VALUES (?, ?)");
-                $stmt->bind_param("is", $id_resep, $isi_alat);
-                if (!$stmt->execute()) {
-                    echo json_encode(["error" => $stmt->error], JSON_PRETTY_PRINT);
-                    exit;
-                }
-            }
-        }
-
-        if (isset($input['isi_bahan'])) {
-            // Delete existing bahan
-            $stmt = $conn->prepare("DELETE FROM bahan_memasak WHERE id_resep = ?");
-            $stmt->bind_param("i", $id_resep);
-            $stmt->execute();
-            $stmt->close();
-
-            // Insert new bahan
-            $bahan = explode("\n", $input['isi_bahan']);
-            foreach ($bahan as $isi_bahan) {
-                $stmt = $conn->prepare("INSERT INTO bahan_memasak (id_resep, isi_bahan) VALUES (?, ?)");
-                $stmt->bind_param("is", $id_resep, $isi_bahan);
-                if (!$stmt->execute()) {
-                    echo json_encode(["error" => $stmt->error], JSON_PRETTY_PRINT);
-                    exit;
-                }
-            }
-        }
-
-        if (isset($input['isi_cara'])) {
-            // Delete existing cara
-            $stmt = $conn->prepare("DELETE FROM cara_memasak WHERE id_resep = ?");
-            $stmt->bind_param("i", $id_resep);
-            $stmt->execute();
-            $stmt->close();
-
-            // Insert new cara
-            $cara = explode("\n", $input['isi_cara']);
-            foreach ($cara as $isi_cara) {
-                $stmt = $conn->prepare("INSERT INTO cara_memasak (id_resep, isi_cara) VALUES (?, ?)");
-                $stmt->bind_param("is", $id_resep, $isi_cara);
-                if (!$stmt->execute()) {
-                    echo json_encode(["error" => $stmt->error], JSON_PRETTY_PRINT);
-                    exit;
-                }
-            }
-        }
-
-        echo json_encode(["message" => "Resep dan detail berhasil diperbarui"], JSON_PRETTY_PRINT);
-    } else {
-        echo json_encode(["error" => $stmt->error], JSON_PRETTY_PRINT);
     }
 }
-
-
 
 // DETAIL RESEP (GET)
 function getDetailResep($conn, $id_resep) {
