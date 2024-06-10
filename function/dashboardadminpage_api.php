@@ -239,6 +239,71 @@ function postTambahResep($conn) {
     }
 }
 
+// UPDATE RESEP (POST)
+function postUpdateResep($conn, $id_resep) {
+    $input = json_decode(file_get_contents('php://input'), true);
+    $stmt = $conn->prepare("UPDATE resep SET judul_resep = ?, waktu_memasak = ?, porsi_masakan = ?, deskripsi_resep = ?, foto_masakan = ?, kesulitan_memasak = ? WHERE id_resep = ?");
+    $stmt->bind_param("siisssi", $input['judul_resep'], $input['waktu_memasak'], $input['porsi_masakan'], $input['deskripsi_resep'], $input['foto_masakan'], $input['kesulitan_memasak'], $id_resep);
+    if ($stmt->execute()) {
+        $stmt->close();
+        // Update alat_memasak, bahan_memasak, and cara_memasak tables
+        if (isset($input['isi_alat'])) {
+            // Delete existing alat
+            $stmt = $conn->prepare("DELETE FROM alat_memasak WHERE id_resep = ?");
+            $stmt->bind_param("i", $id_resep);
+            $stmt->execute();
+            $stmt->close();
+            // Insert new alat
+            $alat = explode("\n", $input['isi_alat']);
+            foreach ($alat as $isi_alat) {
+                $stmt = $conn->prepare("INSERT INTO alat_memasak (id_resep, isi_alat) VALUES (?, ?)");
+                $stmt->bind_param("is", $id_resep, $isi_alat);
+                if (!$stmt->execute()) {
+                    echo json_encode(["error" => $stmt->error], JSON_PRETTY_PRINT);
+                    exit;
+                }
+            }
+        }
+        if (isset($input['isi_bahan'])) {
+            // Delete existing bahan
+            $stmt = $conn->prepare("DELETE FROM bahan_memasak WHERE id_resep = ?");
+            $stmt->bind_param("i", $id_resep);
+            $stmt->execute();
+            $stmt->close();
+            // Insert new bahan
+            $bahan = explode("\n", $input['isi_bahan']);
+            foreach ($bahan as $isi_bahan) {
+                $stmt = $conn->prepare("INSERT INTO bahan_memasak (id_resep, isi_bahan) VALUES (?, ?)");
+                $stmt->bind_param("is", $id_resep, $isi_bahan);
+                if (!$stmt->execute()) {
+                    echo json_encode(["error" => $stmt->error], JSON_PRETTY_PRINT);
+                    exit;
+                }
+            }
+        }
+        if (isset($input['isi_cara'])) {
+            // Delete existing cara
+            $stmt = $conn->prepare("DELETE FROM cara_memasak WHERE id_resep = ?");
+            $stmt->bind_param("i", $id_resep);
+            $stmt->execute();
+            $stmt->close();
+            // Insert new cara
+            $cara = explode("\n", $input['isi_cara']);
+            foreach ($cara as $isi_cara) {
+                $stmt = $conn->prepare("INSERT INTO cara_memasak (id_resep, isi_cara) VALUES (?, ?)");
+                $stmt->bind_param("is", $id_resep, $isi_cara);
+                if (!$stmt->execute()) {
+                    echo json_encode(["error" => $stmt->error], JSON_PRETTY_PRINT);
+                    exit;
+                }
+            }
+        }
+        echo json_encode(["message" => "Resep dan detail berhasil diperbarui"], JSON_PRETTY_PRINT);
+    } else {
+        echo json_encode(["error" => $stmt->error], JSON_PRETTY_PRINT);
+    }
+}
+
 // DETAIL RESEP (GET)
 function getDetailResep($conn, $id_resep) {
     $stmt = $conn->prepare("
