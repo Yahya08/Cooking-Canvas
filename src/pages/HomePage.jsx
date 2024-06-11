@@ -25,14 +25,13 @@ const HomePage = () => {
               </p>
             </Col>
             <Col md={6} className="mb-4">
-              
-              <img src="https://source.unsplash.com/800x600/?cooking" alt="Kuliner" className="w-75" />
+            <img src="https://media.istockphoto.com/id/1269869107/id/foto/spaghetti-dan-makanan-bakso.jpg?s=612x612&w=0&k=20&c=uxVEghNP6tizBM320Ej9vtundvjazY6659wqjHI-qsw=" alt="Kuliner" className="image-custom-small" />
             </Col>
           </Row>
 
           <Row className="d-flex align-items-center mb-5">
-            <Col md={6} className="mb-4">
-              <img src="https://source.unsplash.com/800x600/?cooking" alt="Resep" className="w-75" />
+            <Col md={6} className=" mb-4">
+               <img src="https://cdn.pixabay.com/photo/2017/12/10/14/47/pizza-3010062_1280.jpg" alt="Resep" className="image-custom" />
             </Col>
             <Col md={6} className="content mb-4">
               <h2>Resep yang Teruji dan Terpercaya</h2>

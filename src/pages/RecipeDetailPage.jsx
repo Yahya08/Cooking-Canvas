@@ -35,7 +35,7 @@ const RecipeDetailPage = () => {
       <div className="row">
       <div className="col-md-6">
   <img
-    src="https://source.unsplash.com/800x600/?cooking"
+    src="https://www.flokq.com/blog/wp-content/uploads/2020/09/A-Guide-to-Ordering-Ayam-Geprek-for-Beginners.png"
     alt="Ayam Goreng Geprek"
     className="img-fluid"
   />
@@ -111,33 +111,41 @@ const RecipeDetailPage = () => {
         </div>
       </div>
       <div className="row">
-        <div className="col-12">
+        <div className="produk-serupa col-12">
           <h2>Produk-produk yang serupa</h2>
-          <div className="row">
+          <div className="produk-serupa1 row">
             <div className="col-md-4">
               <div className="card">
-                <img src="https://source.unsplash.com/800x600/?cooking" className="card-img-top" alt="Resep 1" />
+              <a href="./Recipe">
+                <img src="https://cdn.pixabay.com/photo/2019/01/29/18/05/burger-3962997_1280.jpg" className="card-img-top" alt="Resep 1" />
+              </a>
                 <div className="card-body">
-                  <h5 className="card-title">Resep 1</h5>
-                  <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                  <h5 className=" card-title">Hamburger</h5>
+                  <p className="card-text">Burger adalah sejenis roti berbentuk bundar yang diiris dua, dan di tengahnya diisi dengan patty yang biasanya diambil dari daging, kemudian sayur-sayuran berupa selada, tomat dan bawang bombai. Sebagai sausnya, hamburger diberi berbagai jenis saus..</p>
                 </div>
               </div>
             </div>
             <div className="col-md-4">
               <div className="card">
-                <img src="https://source.unsplash.com/800x600/?cooking" className="card-img-top" alt="Resep 2" />
+              <a href="./Recipe">
+                <img src="https://cdn.pixabay.com/photo/2017/12/10/14/47/pizza-3010062_1280.jpg" className="card-img-top"  alt="Resep 2" />
+              </a>  
                 <div className="card-body">
-                  <h5 className="card-title">Resep 2</h5>
-                  <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                  <h5 className="card-title">Pizza</h5>
+                  <p className="card-text">Hidangan gurih asal Italia sejenis adonan bundar dan pipih, yang dipanggang di oven dan biasanya dilumuri saus tomat serta keju dengan bahan makanan tambahan lainnya yang bisa dipilih sesuai selera. Keju yang dipakai biasanya mozzarella atau keju piza.</p>
                 </div>
               </div>
+
+            
             </div>
             <div className="col-md-4">
               <div className="card">
-                <img src="https://source.unsplash.com/800x600/?cooking" className="card-img-top" alt="Resep 3" />
+              <a href="./Recipe">
+                <img src="https://cdn.pixabay.com/photo/2022/08/25/17/40/spare-ribs-7410906_1280.jpg" className="card-img-top" alt="Resep 3" />
+                </a>   
                 <div className="card-body">
-                  <h5 className="card-title">Resep 3</h5>
-                  <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                  <h5 className="card-title">BBQ</h5>
+                  <p className="card-text">Proses pemanggangan menggunakan api langsung dan kering, dengan suhu di atas 500 °F (260 °C) selama beberapa menit. Pemanggangan dapat dilakukan di atas kayu, arang, gas, atau alat listrik. Pemanggangan dan pengasapan memakan waktu yang berbeda.</p>
                 </div>
               </div>
             </div>

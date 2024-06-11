@@ -1,61 +1,57 @@
-*{
-    font-family: "Poppins", sans-serif;
-    
+/* General Styles */
+* {
+  font-family: "Poppins", sans-serif;
 }
+
 :root {
-    --primary-color: #f6f8fd;
-    --secondary-color: #dc3545;
-    --color-text: #231942;
-    --navbar-color: #ffffff;
-    --navbar-color-text: #000000;
-  }
-
-
-.navbar  .nav-link a{
-    padding: 5px 10px 5px 10px;
-    font-weight :500;
-    text-decoration: none;
-    /* color: var(--navbar-color); */
-}
-/* .navbar .color-active{
-    background-color:var(--navbar-color);
-    padding: 20px 0 20px 0;
-    border-bottom: 2px solid #922833;
-} */
-
-
-.navbar .nav-link a:hover{
-    color:#e70f0f;
-}
-.navbar .nav-link .active{
-    background-color: rgb(63, 62, 62);
-    /* color: var(--primary-color); */
-  }
-  .navbar .nav-link .active:hover{
-    color:var(--navbar-color);
+  --primary-color: #f6f8fd;
+  --secondary-color: #dc3545;
+  --color-text: #231942;
+  --navbar-color: #ffffff;
+  --navbar-color-text: #000000;
 }
 
-header {
-  background: #ffffff; 
-  
+/* Navbar Styles */
+.navbar .nav-link a {
+  padding: 5px 10px;
+  font-weight: 500;
+  text-decoration: none;
 }
-/* EFEK NAVBAR DAN TRANSISI */
+
+.navbar .nav-link a:hover {
+  color: #e70f0f;
+}
+
+.navbar .nav-link .active {
+  background-color: rgb(63, 62, 62);
+}
+
+.navbar .nav-link .active:hover {
+  color: var(--navbar-color);
+}
+
 .nav-link .active {
   font-weight: bold;
   color: #dc3545 !important;
 }
 
+/* Header Styles */
+header {
+  background: #ffffff;
+}
+
 .hero-section {
   background-color: #ffffff;
-
 }
-.hero-section h1{
+
+.hero-section h1 {
   font-size: 64px;
   font-weight: bolder;
 }
+
 .hero-section p {
   font-size: 1.25rem;
-  color:#828282;
+  color: #828282;
 }
 
 .btn-outline-danger {
@@ -68,52 +64,63 @@ header {
   color: #fff;
 }
 
+/* General Layout */
 .text-center {
   text-align: center;
 }
-/* styles.css */
+
 .full-height-section {
-background-color: #F7F7F7; /* Gray background */
-color: white;
-min-height: 50vh;
-display: flex;
-justify-content: center;
-align-items: center;
+  background-color: #f7f7f7;
+  color: white;
+  min-height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.full-height-section h1{
-  color:#000000;
+
+.full-height-section h1 {
+  color: #000000;
 }
-.full-height-section p{
-  color:#4e4d4d;
+
+.full-height-section p {
+  color: #4e4d4d;
 }
+
 .white-divider {
-height: 100px; 
-background-color: white;
+  height: 100px;
+  background-color: white;
 }
 
-.footer-section {
-background-color: #000000; 
-color: white;
+.content {
+  background-color: #ffffff;
 }
 
-.footer a{
-  text-decoration: none;
+.content p {
+  color: #828282;
+  font-size: 24px;
 }
 
-.heading{
+.content h2 {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+/* Testimonial Styles */
+.heading {
   display: grid;
-  grid:  150px / auto auto auto ;
+  grid-template-rows: 150px;
+  grid-template-columns: auto auto auto;
 }
 
 .testimonial {
   background-color: #ffffff;
   padding: 30px;
   border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.testimonial P{
-  color:#828282;
+.testimonial p {
+  color: #828282;
   font-size: 12pt;
 }
 
@@ -121,36 +128,35 @@ color: white;
   font-size: 2rem;
   margin-bottom: 10px;
 }
-.white-divider {
-  background-color: #fff;
-  height: 4rem;
-  width: 100%;
-  margin: 20px 0;
-}
-.content{
-  background-color: #ffffff;
-}
-.content p{
-  color:#828282;
-  font-size: 24px;
-}
-.content h2{
-  font-size: 40px;
-  font-weight: bold;
+
+/* Footer Styles */
+.footer-section {
+  background-color: #000000;
+  color: white;
 }
 
 .footer-section a {
   text-decoration: none;
-  color: white; /* Ensure the text color is still white */
+  color: white;
 }
 
 .footer-section a:hover {
-  text-decoration: underline; /* Optional: Underline on hover */
-  color: #dc3545; /* Change to desired color on hover */
+  text-decoration: underline;
+  color: #dc3545;
+}
+.image-custom {
+  width: 624px;
+  height: 400px;
+  object-fit: cover;
 }
 
+.image-custom-small {
+  width: 624px;
+  height: 400px;
+  object-fit: cover;
+  margin-left: 20px;
+}
 
-
-
-
-
+.content {
+  padding-right: 20px; /* Adjust this value as needed */
+}
