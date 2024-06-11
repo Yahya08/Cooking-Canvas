@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const NavigationBar = () => {
   const [logoutHovered, setLogoutHovered] = useState(false);
@@ -15,6 +15,8 @@ const NavigationBar = () => {
   const [permintaanHovered, setPermintaanHovered] = useState(false);
   const [tambahResepHovered, setTambahResepHovered] = useState(false);
   const [editResepHovered, setEditResepHovered] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleLogoutHover = () => {
     setLogoutHovered(true);
@@ -51,7 +53,7 @@ const NavigationBar = () => {
         // handle success
         console.log('Logout successful', data);
         // Redirect to the login page or home page after logout
-        window.location.href = '/login'; // Adjust the URL as needed
+        navigate('/signin'); // Adjust the URL as needed
       })
       .catch(error => {
         // handle error
