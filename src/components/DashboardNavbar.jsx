@@ -42,6 +42,23 @@ const NavigationBar = () => {
     setTambahResepClicked(false);
   };
 
+  const handleLogout = () => {
+    fetch('function/logout_api.php', {
+      method: 'POST',
+    })
+      .then(response => response.json())
+      .then(data => {
+        // handle success
+        console.log('Logout successful', data);
+        // Redirect to the login page or home page after logout
+        window.location.href = '/login'; // Adjust the URL as needed
+      })
+      .catch(error => {
+        // handle error
+        console.error('Logout failed', error);
+      });
+  };
+
   return (
     <Navbar bg="light" expand="lg">
       <Container>
@@ -112,6 +129,7 @@ const NavigationBar = () => {
           }}
           onMouseEnter={handleLogoutHover}
           onMouseLeave={handleLogoutLeave}
+          onClick={handleLogout}
         >
           Log Out
         </Button>
