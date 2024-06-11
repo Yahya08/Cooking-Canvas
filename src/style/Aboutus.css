@@ -39,4 +39,10 @@
   .text-end {
     text-align: right;
   }
-  
+  .about{
+    height:400rem;
+    width:624rem ;
+  }
+  .custom-img {
+    border-radius: 10px; 
+}

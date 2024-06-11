@@ -22,9 +22,10 @@ const Contact = () => {
           </Col>
           <Col md={4}>
             <img
-              src="https://png.pngtree.com/png-vector/20230726/ourmid/pngtree-coloring-pages-free-kids-printable-teddy-bear-drawing-in-pencil-cartoon-png-image_6746133.png"
+              src="https://i.pinimg.com/564x/33/2a/41/332a411f1f8e157a95d1ea679a2077a8.jpg"
               alt="Pears"
               className="img-fluid"
+              style={{ borderRadius: '10px' }}
             />
           </Col>
         </Row>

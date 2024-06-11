@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import '../style/Signup.css';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 
@@ -40,7 +40,7 @@ const Signup = () => {
           className="d-none d-md-flex align-items-center justify-content-center"
           style={{
             backgroundColor:'#0F172A',
-            backgroundImage: "url('https://source.unsplash.com/800x600/?cooking')",
+            backgroundImage: "url('signup (1).jpg')",
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             color: '#ffffff'
@@ -77,7 +77,7 @@ const Signup = () => {
               </Button>
             </Form>
           </div>
-          <p style={{ marginTop: '5px' }}>Don't have an account yet? <a href="#" style={{ color: 'inherit', fontWeight: 'bold' }}>Sign In</a></p>
+          <p style={{ marginTop: '5px' }}>Dont have an account yet? <a href="#" style={{ color: 'inherit', fontWeight: 'bold' }}>Sign In</a></p>
         </Col>
       </Row>
     </Container>

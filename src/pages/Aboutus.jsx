@@ -19,13 +19,16 @@ const Aboutus = () => {
           </Col>
           <Col md={4}>
             <img
-              src="https://source.unsplash.com/800x600/?cooking" // Update with the correct path to your image
-              alt="Pears"
-              className="img-fluid"
+                src="aboutus.png"
+                alt="Pears"
+                className="about img-fluid"
+                style={{ borderRadius: '10px' }} // Mengatur radius sudut menjadi 10 piksel
             />
-          </Col>
+        </Col>
         </Row>
       </Container>
+
+      
 
       <footer className="footer-section py-4" style={{ backgroundColor: '#000', color: '#fff' }}>
       <Container>

@@ -33,4 +33,18 @@
   .recipe-detail-page .card {
     margin-bottom: 20px;
   }
-  
+  .card-title{
+    font-size:20px;
+    font-weight: bolder;
+    padding-bottom: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .card-text{
+    font-size: medium;
+  }
+  .produk-serupa{
+    padding-top: 1rem;
+  }
+  .produk-serupa1{
+    padding-top: 1rem;
+  }

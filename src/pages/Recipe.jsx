@@ -12,7 +12,12 @@ const Recipe = () => {
         <section className="latest-recipes mt-5">
           <h2 className="judul">Resep terbaru</h2>
           <div className="recipe-item mb-4">
-            <img src="https://source.unsplash.com/800x600/?cooking" alt="Ayam Goreng Geprek" className="img-fluid" />
+                <img
+          src="https://www.flokq.com/blog/wp-content/uploads/2020/09/A-Guide-to-Ordering-Ayam-Geprek-for-Beginners.png"
+          alt="Ayam Goreng Geprek"
+          className="img-fluid"
+          style={{ borderRadius: '10px' }}
+/>
             <div className="recipe-details">
               <h3>Ayam Goreng Geprek</h3>
               <div className="recipe-meta">
@@ -23,7 +28,12 @@ const Recipe = () => {
             </div>
           </div>
           <div className="recipe-item mb-4">
-            <img src="https://source.unsplash.com/800x600/?cooking" alt="Resep Gorengan" className="img-fluid" />
+                <img
+          src="https://cdn.pixabay.com/photo/2016/04/25/01/58/french-fries-1351062_1280.jpg"
+          alt="Resep Gorengan"
+          className="img-fluid"
+          style={{ borderRadius: '10px' }}
+/>
             <div className="recipe-details">
               <h3>Resep Gorengan</h3>
               <div className="recipe-meta">
@@ -34,7 +44,12 @@ const Recipe = () => {
             </div>
           </div>
           <div className="recipe-item mb-4">
-            <img src="https://source.unsplash.com/800x600/?cooking" alt="Resep Nasi goreng Khas Yogyakarta" className="img-fluid" />
+          <img
+          src="https://cdn.pixabay.com/photo/2014/02/11/08/31/fried-rice-263882_1280.jpg"
+          alt="Resep Nasi goreng Khas Yogyakarta"
+          className="img-fluid"
+          style={{ borderRadius: '10px' }}
+/>
             <div className="recipe-details">
               <h3>Resep Nasi goreng Khas Yogyakarta</h3>
               <div className="recipe-meta">
@@ -45,7 +60,12 @@ const Recipe = () => {
             </div>
           </div>
           <div className="recipe-item mb-4">
-            <img src="https://source.unsplash.com/800x600/?cooking" alt="Spaghetti ala anak kos" className="img-fluid" />
+              <img
+        src="https://cdn.pixabay.com/photo/2014/04/22/02/55/pasta-329522_1280.jpg"
+        alt="Spaghetti ala anak kos"
+        className="img-fluid"
+        style={{ borderRadius: '10px' }}
+/>
             <div className="recipe-details">
               <h3>Spaghetti ala anak kos</h3>
               <div className="recipe-meta">
