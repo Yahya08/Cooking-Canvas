@@ -48,7 +48,7 @@ function TambahResepUser() {
           <form onSubmit={handleSubmit}>
             <div className="mb-3">
               <label htmlFor="judul" className="form-label">Judul</label>
-              <input type="text" className="form-control" id="judul" value={judul} onChange={(e) => setJudul(e.target.value)} placeholder="Masukan judul kamu" />
+              <input type="text" className="form-control" id="judul" value={judul} onChange={(e) => setJudul(e.target.value)} placeholder="Masukan judul" />
             </div>
             <div className="mb-3">
               <label htmlFor="waktu" className="form-label">Waktu</label>
