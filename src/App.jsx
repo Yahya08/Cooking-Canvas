@@ -13,6 +13,7 @@ import DashboardTambahResep from './pages/DashboardTambahResep';
 import DashboardPermintaanResep from './pages/DashboardPermintaanResep';
 import DashboardEditResep from './pages/DashboardEditResep';
 import RecipeDetailPage from './pages/RecipeDetailPage';
+import TambahResepUser from './pages/TambahResepUser';
 
 function App() {
   const location = useLocation();
@@ -36,6 +37,7 @@ function App() {
         <Route path="/dashboardpermintaanresep" Component={DashboardPermintaanResep} />
         <Route path="/dashboardeditresep" Component={DashboardEditResep} />
         <Route path="/recipedetailpage" Component={RecipeDetailPage} />
+        <Route path="/tambahresepuser" Component={TambahResepUser}/>
       </Routes>
 
       {/* <FooterComponent /> */}
