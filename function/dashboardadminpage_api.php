@@ -240,6 +240,7 @@ function postTambahResep($conn) {
 }
 
 // UPDATE RESEP (POST)
+// Perlu button submit di update resep
 function postUpdateResep($conn, $id_resep) {
     $input = json_decode(file_get_contents('php://input'), true);
     $stmt = $conn->prepare("UPDATE resep SET judul_resep = ?, waktu_memasak = ?, porsi_masakan = ?, deskripsi_resep = ?, foto_masakan = ?, kesulitan_memasak = ? WHERE id_resep = ?");
